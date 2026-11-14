@@ -102,51 +102,51 @@ const TRIP_DEFAULT = {
       ]
     },
     {
-      city: "USJ · 日本環球影城",
-      shortCity: "環球影城",
-      title: "日本環球影城 USJ 夢幻一日暢玩（大正出發超近！）",
-      center: [34.6654, 135.4323],
+      city: "Osaka · 中崎町・天滿・中之島",
+      shortCity: "中崎町・天滿",
+      title: "睡飽出門・老宅咖啡與商店街・中之島河岸散步",
+      center: [34.6990, 135.5090],
       items: [
         {
-          id: "d2-1", time: "07:20", duration: "20 分鐘",
-          name: "從大正民宿出發前往 USJ", area: "大正 → 環球城", cat: "交通",
-          desc: "住大正站去 USJ 超級快！從「JR 大正站」搭大阪環狀線 2 站到「西九條站」，轉乘 JR 夢咲線至「環球城站」，車程僅約 12 分鐘。",
-          map: "Universal City Station", lat: 34.6679, lng: 135.4383,
-          transit: "🚶 出站步行 5 分鐘入園"
+          id: "d2-1", time: "10:00", duration: "45 分鐘",
+          name: "大正出發・慢慢前往中崎町", area: "大正 → 中崎町", cat: "交通",
+          desc: "在民宿附近吃點早餐再出門。從 JR 大正站搭大阪環狀線至天滿站，再步行前往中崎町；轉乘與步行時間依當日導航為準，不用趕早班車。",
+          map: "Nakazakicho Station Osaka", lat: 34.7069, lng: 135.5055,
+          transit: "🚶 步行探索中崎町巷弄"
         },
         {
-          id: "d2-2", time: "08:30", duration: "3 小時",
-          name: "超級任天堂世界 Super Nintendo World", area: "USJ", cat: "景點",
-          desc: "入園立即用 USJ App 抽整理券或憑 Express 入場！必玩：瑪利歐賽車～庫巴的挑戰書、咚奇剛的瘋狂礦車、戴能量手環敲磚塊。",
-          map: "Super Nintendo World Osaka", lat: 34.6656, lng: 135.4306,
-          transit: "🚶 園區移動 8 分鐘"
+          id: "d2-2", time: "11:00", duration: "1.5 小時",
+          name: "中崎町老宅咖啡・古著與雜貨", area: "中崎町", cat: "購物",
+          desc: "慢逛老宅改造的咖啡館、古著店與小型雜貨店，選一間喜歡的店喝咖啡。各店開門與公休日不同，以現場公告為準；住宅巷弄請降低音量。",
+          map: "Nakazakicho Osaka", lat: 34.7072, lng: 135.5058,
+          transit: "🚶 經天五中崎通商店街往天滿方向，預留約 20 分鐘"
         },
         {
-          id: "d2-3", time: "12:00", duration: "1.5 小時",
-          name: "奇諾比奧咖啡店 / 三根掃帚午餐", area: "USJ", cat: "美食",
-          desc: "奇諾比奧咖啡店需掃描店門 QR 預約時段；或前往哈利波特園區「三根掃帚」享用烤雞排與奶油啤酒。",
-          map: "Kinopio's Cafe USJ", lat: 34.6658, lng: 135.4309,
-          transit: "🚶 園區移動 5 分鐘"
+          id: "d2-3", time: "12:45", duration: "1 小時",
+          name: "天滿午餐・壽司或大阪家常定食", area: "天滿", cat: "美食",
+          desc: "在 JR 天滿站周邊找壽司、烏龍麵或定食店，依當天胃口與排隊情況選擇。午餐不綁定預約名店，把時間留給慢慢逛街。",
+          map: "Tenma Station Osaka", lat: 34.7049, lng: 135.5122,
+          transit: "🚶 步行接上天神橋筋商店街"
         },
         {
-          id: "d2-4", time: "13:30", duration: "2.5 小時",
-          name: "哈利波特魔法世界", area: "USJ", cat: "景點",
-          desc: "霍格華茲城堡「哈利波特禁忌之旅」、鷹馬的飛行，活米村挑魔杖互動施法。",
-          map: "The Wizarding World of Harry Potter Osaka", lat: 34.6649, lng: 135.4308,
-          transit: "🚶 園區移動 6 分鐘"
+          id: "d2-4", time: "14:00", duration: "1.5 小時",
+          name: "天神橋筋商店街・在地小店與點心", area: "天神橋筋", cat: "購物",
+          desc: "沿有頂棚的商店街往南森町方向慢逛，挑選生活雜貨、藥妝與街邊點心。不必走完整條商店街，逛累了隨時坐下休息。",
+          map: "Tenjinbashisuji Shopping Street Osaka", lat: 34.7007, lng: 135.5110,
+          transit: "🚶 往中之島公園方向步行，預留約 25 分鐘"
         },
         {
-          id: "d2-5", time: "16:00", duration: "2.5 小時",
-          name: "小小兵樂園 & 侏羅紀公園飛天翼龍", area: "USJ", cat: "景點",
-          desc: "小小兵瘋狂乘車遊、購買造型爆米花桶；刺激派必搭「飛天翼龍」與「好萊塢美夢乘車遊」。",
-          map: "Minion Park USJ", lat: 34.6644, lng: 135.4343,
-          transit: "🚶 出園步行 5 分鐘"
+          id: "d2-5", time: "16:00", duration: "1.5 小時",
+          name: "中之島公園・中央公會堂河岸散步", area: "中之島", cat: "景點",
+          desc: "沿河岸散步、欣賞大阪市中央公會堂外觀，天冷或下雨就改在附近咖啡館休息。這一站以戶外散步為主，不安排需預約的館內參觀。",
+          map: "Osaka City Central Public Hall", lat: 34.6935, lng: 135.5031,
+          transit: "🚇 淀屋橋搭御堂筋線至心齋橋，轉長堀鶴見綠地線回大正，預留約 40 分鐘"
         },
         {
-          id: "d2-6", time: "20:00", duration: "1.5 小時",
-          name: "Universal CityWalk 晚餐 & 12分鐘返抵大正", area: "環球城市大道", cat: "美食",
-          desc: "園區外大道有大阪章魚燒博物館、Shake Shack、Red Lobster，吃飽搭 JR 僅 12 分鐘即回到大正站民宿！",
-          map: "Universal CityWalk Osaka", lat: 34.6673, lng: 135.4375
+          id: "d2-6", time: "18:30", duration: "1.5 小時",
+          name: "大正站周邊晚餐・沖繩料理或居酒屋", area: "大正", cat: "美食",
+          desc: "回到住宿附近再吃晚餐，選擇沖繩料理、居酒屋或家常餐館；依現場營業與候位情況決定。餐後買些水果與隔日早餐，輕鬆步行回民宿。",
+          map: "Taisho Station Osaka", lat: 34.6656, lng: 135.4793
         }
       ]
     },
@@ -343,12 +343,12 @@ const TRIP_DEFAULT = {
 
   highlights: [
     {
-      name: "日本環球影城 USJ",
-      tag: "大正出發12分",
-      area: "此花區",
-      desc: "從大正站搭 JR 僅 12 分鐘！超級任天堂世界、咚奇剛國度與哈利波特魔法世界。",
-      map: "Universal Studios Japan", lat: 34.6654, lng: 135.4323,
-      img: "https://images.unsplash.com/photo-1624601573012-efb68931cc8f?auto=format&fit=crop&w=700&q=80"
+      name: "中崎町・老宅咖啡與雜貨",
+      tag: "悠閒散策",
+      area: "中崎町",
+      desc: "老宅咖啡、古著與雜貨小店，適合慢慢散步；可接續天滿與天神橋筋商店街。",
+      map: "Nakazakicho Osaka", lat: 34.7072, lng: 135.5058,
+      img: "https://images.unsplash.com/photo-1590559899731-a382839e5549?auto=format&fit=crop&w=700&q=80"
     },
     {
       name: "道頓堀・固力果跑跑人",
@@ -510,7 +510,7 @@ const TRIP_DEFAULT = {
       title: "大正站 Airbnb 包棟民宿入住須知",
       items: [
         "房源位置：JR 大阪環狀線／地鐵長堀鶴見綠地線「大正站」步行約 4 分鐘（鄰近京瓷巨蛋、AEON 購物中心與 TUGBOAT 河畔美食街）",
-        "包棟優勢：整棟 3 層樓獨立房屋，前往心齋橋（地鐵直達 6 分）、梅田（JR 直達 11 分）、USJ 環球影城（約 12 分）、關西機場（JR 關空快速直達）都超方便",
+        "包棟優勢：整棟 3 層樓獨立房屋，前往心齋橋（地鐵直達 6 分）、梅田（JR 直達 11 分）、關西機場（JR 關空快速直達）都超方便",
         "日本住宅區夜間 21:00 後請降低音量，出入隨手鎖門，垃圾請依民宿規定分類放置於室內"
       ]
     },
@@ -537,7 +537,7 @@ const TRIP_DEFAULT = {
   ],
 
   checklist: [
-    { cat: "證件與票券", items: ["護照正本（效期 6 個月以上）", "樂桃航空預訂確認碼 #UF25FY 截圖", "Visit Japan Web QR 截圖", "Airbnb 入住指南 & 門鎖密碼截圖", "日幣現金 & 零錢包", "海外高回饋信用卡 2 張", "USJ 門票 + 快速通關 QR"] },
+    { cat: "證件與票券", items: ["護照正本（效期 6 個月以上）", "樂桃航空預訂確認碼 #UF25FY 截圖", "Visit Japan Web QR 截圖", "Airbnb 入住指南 & 門鎖密碼截圖", "日幣現金 & 零錢包", "海外高回饋信用卡 2 張", "大阪市區散步路線與交通資訊截圖"] },
     { cat: "3C 與行李", items: ["手機 + 充電線", "行動電源（放隨身包，勿託運）", "行李電子秤（確認隨身行李 ≤ 7kg）", "日本 eSIM / 網卡", "Apple Wallet 綁定 ICOCA", "多孔延長線 / 充電頭"] },
     { cat: "衣物與隨身物", items: ["好走防滑的運動鞋", "12月保暖外套、發熱衣、圍巾", "休足時間 / 足貼", "常備藥品（腸胃・止痛・感冒）", "摺疊購物袋（AEON 超市採買用）", "晴雨兩用摺疊傘"] }
   ]
