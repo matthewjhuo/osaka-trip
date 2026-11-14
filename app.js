@@ -411,7 +411,7 @@
             <strong class="serif-en" style="font-size:17px">NT$ ${Math.round(e.jpy * rate).toLocaleString()}</strong>
             <div class="muted-xs">¥ ${Math.round(e.jpy).toLocaleString()}</div>
           </div>
-          <button class="exp-del" data-delexp="${e.idx}" title="刪除">×</button>
+          <button type="button" class="exp-del" data-delexp="${e.idx}" aria-label="刪除支出：${esc(e.name)}">刪除</button>
         </div>
       </div>`
       )
@@ -440,7 +440,10 @@
   $("#expenseListWrap").addEventListener("click", (e) => {
     const del = e.target.closest("[data-delexp]");
     if (!del) return;
-    expenses.splice(+del.dataset.delexp, 1);
+    const idx = Number(del.dataset.delexp);
+    if (!Number.isInteger(idx) || idx < 0 || idx >= expenses.length) return;
+    if (!confirm(`確定刪除「${expenses[idx].name}」這筆支出嗎？`)) return;
+    expenses.splice(idx, 1);
     saveExpenses();
     renderWalletView();
   });

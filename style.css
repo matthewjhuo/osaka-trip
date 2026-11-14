@@ -876,12 +876,28 @@ body {
 }
 
 .exp-del {
-  border: 0;
-  background: none;
-  color: var(--muted);
-  font-size: 18px;
+  border: 1px solid #dfb3a9;
+  border-radius: 10px;
+  background: #fff3ef;
+  color: #a33828;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  min-height: 44px;
+  min-width: 48px;
+  padding: 6px 8px;
+  flex-shrink: 0;
   margin-left: 10px;
   cursor: pointer;
+}
+
+.exp-item > div:first-child {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.exp-item > div:last-child {
+  flex-shrink: 0;
 }
 
 /* ==================== 5. 備用景點 VIEW (影片 1 00:13–00:14) ==================== */
