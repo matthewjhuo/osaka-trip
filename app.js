@@ -6,7 +6,7 @@
   const gmapUrl = (q) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
 
   // ---------- Storage ----------
-  const STORAGE_KEY = "osaka_v2_state";
+  const STORAGE_KEY = "osaka_v3_state";
   const loadState = () => {
     try {
       const raw = JSON.parse(localStorage.getItem(STORAGE_KEY));
@@ -217,10 +217,13 @@
           </div>
           <h4>${esc(h.name)}</h4>
           <p class="muted-xs" style="margin-bottom:10px">${esc(h.address)} · ${esc(h.checkIn)}</p>
-          <a class="map-blue-btn" href="${gmapUrl(h.map || h.name)}" target="_blank" rel="noopener">📍 地圖導航</a>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            ${h.airbnbUrl ? `<a class="map-blue-btn" style="background:var(--terracotta)" href="${esc(h.airbnbUrl)}" target="_blank" rel="noopener">🏠 查看 Airbnb 房源</a>` : ""}
+            <a class="map-blue-btn" href="${gmapUrl(h.map || h.name)}" target="_blank" rel="noopener">📍 地圖導航</a>
+          </div>
           <details class="room-details" open>
             <summary>
-              <span>🛏️ 房間分配（共 ${h.rooms.length} 間房）</span>
+              <span>🛏️ 樓層與房間配置（共 ${h.rooms.length} 區）</span>
               <span>▾</span>
             </summary>
             ${h.rooms
@@ -496,6 +499,20 @@
         .bindPopup(`<b>${idx + 1}. ${esc(it.name)}</b><br><small>${esc(it.time)} · ${esc(it.area)}</small>`)
         .addTo(markersLayer);
       currentStopMarkers.push(m);
+    });
+
+    // 住宿基地標記 (大正站 Airbnb 包棟民宿)
+    (state.hotels || []).forEach((h) => {
+      if (!h.lat || !h.lng) return;
+      const homeIcon = L.divIcon({
+        className: "hotel-pin",
+        html: `<div style="width:30px;height:30px;border-radius:50%;background:#b8533c;color:#fff;border:2px solid #fff;display:grid;place-items:center;font-size:14px;box-shadow:0 3px 8px rgba(0,0,0,0.35)">🏠</div>`,
+        iconSize: [30, 30],
+        iconAnchor: [15, 15]
+      });
+      L.marker([h.lat, h.lng], { icon: homeIcon })
+        .bindPopup(`<b>🏠 住宿基地：${esc(h.name)}</b><br><small>${esc(h.area)}</small>`)
+        .addTo(markersLayer);
     });
 
     // 收藏景點標記
@@ -1008,6 +1025,51 @@
       const [from1, to1] = fd.get("route1").split("→").map((s) => s.trim());
       state.flights[0] = { ...f0, code: fd.get("code0"), from: from0 || f0.from, to: to0 || f0.to, dep: fd.get("dep0"), arr: fd.get("arr0"), remind: fd.get("rem0") };
       state.flights[1] = { ...f1, code: fd.get("code1"), from: from1 || f1.from, to: to1 || f1.to, dep: fd.get("dep1"), arr: fd.get("arr1"), remind: fd.get("rem1") };
+      saveState();
+      renderHomeShowcase();
+      closeModal();
+    };
+  });
+
+  // 5b) 編輯住宿與分房 Modal
+  $("#editHotelBtn")?.addEventListener("click", () => {
+    const h = state.hotels[0];
+    if (!h) return;
+    sheet.innerHTML = `
+      <h3>🏠 編輯住宿與樓層分房</h3>
+      <form id="hotelForm" class="form-grid">
+        <label>民宿 / 飯店名稱<input name="name" value="${esc(h.name)}" required /></label>
+        <label>地址與交通說明<input name="address" value="${esc(h.address)}" /></label>
+        <label>入住須知 / 門鎖備註<input name="checkIn" value="${esc(h.checkIn)}" /></label>
+        <label>Airbnb 房源連結<input name="airbnbUrl" value="${esc(h.airbnbUrl || "")}" /></label>
+        ${h.rooms
+          .map(
+            (r, ri) => `
+          <div style="border-top:1px solid var(--border);padding-top:8px;margin-top:4px">
+            <strong style="font-size:13px;color:var(--terracotta)">${esc(r.unit)}（${esc(r.type)}）</strong>
+            <label style="margin-top:6px">入住成員<input name="guests_${ri}" value="${esc(r.guests)}" /></label>
+            <label style="margin-top:6px">備註<input name="note_${ri}" value="${esc(r.note)}" /></label>
+          </div>`
+          )
+          .join("")}
+        <div class="modal-actions">
+          <button type="button" class="btn-secondary" id="cancelModalBtn">取消</button>
+          <button type="submit" class="btn-primary">儲存住宿</button>
+        </div>
+      </form>`;
+    backdrop.classList.remove("hidden");
+    $("#cancelModalBtn").onclick = closeModal;
+    $("#hotelForm").onsubmit = (e) => {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      h.name = fd.get("name").trim();
+      h.address = fd.get("address").trim();
+      h.checkIn = fd.get("checkIn").trim();
+      h.airbnbUrl = fd.get("airbnbUrl").trim();
+      h.rooms.forEach((r, ri) => {
+        r.guests = fd.get(`guests_${ri}`).trim();
+        r.note = fd.get(`note_${ri}`).trim();
+      });
       saveState();
       renderHomeShowcase();
       closeModal();

@@ -1,11 +1,11 @@
-// 大阪 6 天 5 夜行程書 — 完整預設資料（所有內容皆可在 App 內直接編輯並自動儲存）
+// 大阪 6 天 5 夜行程書 — 完整預設資料（以大正站 Airbnb 三層獨棟民宿為基地）
 const TRIP_DEFAULT = {
   eyebrow: "Kansai Tabi · 關西之旅",
   title: "Osaka 遊記",
   heroTitle: "Osaka Kansai Trip",
   startDate: "2026-12-10",
   departureTime: "08:30",
-  badges: ["🏯 大阪・京都・奈良", "🌈 6天5夜", "🚆 自由行"],
+  badges: ["🏠 大正站包棟民宿", "🌈 6天5夜", "🏯 大阪・京都・奈良"],
   rate: 0.215,
 
   flights: [
@@ -31,50 +31,52 @@ const TRIP_DEFAULT = {
 
   hotels: [
     {
-      stayLabel: "全程 5 晚",
+      stayLabel: "全程 5 晚 · 包棟民宿",
       dates: "Day 1 – Day 5",
-      name: "Swissôtel Nankai Osaka（大阪南海瑞士酒店）",
-      area: "難波站直結",
-      address: "大阪市中央區難波 5-1-60（南海難波站正上方）",
-      map: "Swissotel Nankai Osaka",
-      lat: 34.6644,
-      lng: 135.5013,
-      img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=900&q=80",
-      checkIn: "15:00 入住 / 11:00 退房",
+      name: "大正車站 4 分・陽光充足 3 層樓獨棟民宿",
+      area: "大阪市大正區（近京瓷巨蛋）",
+      address: "大阪府大阪市大正區（JR 大阪環狀線／地鐵長堀鶴見綠地線「大正站」步行 4 分鐘、京瓷巨蛋步行 8 分鐘）",
+      map: "Taisho Station Osaka",
+      airbnbUrl: "https://www.airbnb.com.tw/rooms/1372891258852120566",
+      lat: 34.6656,
+      lng: 135.4793,
+      img: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=900&q=80",
+      checkIn: "自助入住 · 整棟 3 層樓獨立空間（含客廳・廚房・衛浴）",
       rooms: [
-        { unit: "A 房", type: "雙人床房 (Swiss Advantage)", guests: "主揪、旅伴 A", note: "高樓層市景・含早餐" },
-        { unit: "B 房", type: "兩張單人床 (Twin Room)", guests: "旅伴 B、旅伴 C", note: "連通房需求已備註" }
+        { unit: "1F 公共空間", type: "客廳・餐廳・廚房・衛浴", guests: "全體旅伴共用", note: "周邊步行即有超商、超市、藥妝店與大正站前居酒屋街" },
+        { unit: "2F 臥室區", type: "主臥室（陽光充足）", guests: "點擊右上「編輯住宿」可填寫分房名單", note: "獨立樓層空間、附空調與收納" },
+        { unit: "3F 臥室區", type: "次臥室", guests: "點擊右上「編輯住宿」可填寫分房名單", note: "三五好友或家庭包棟私密不打擾" }
       ]
     }
   ],
 
   days: [
     {
-      city: "Osaka · 大阪難波",
-      shortCity: "大阪難波",
-      title: "抵達關西・心齋橋與道頓堀夜未眠",
-      center: [34.6687, 135.5013],
+      city: "Osaka · 大正・心齋橋・道頓堀",
+      shortCity: "大正・道頓堀",
+      title: "抵達關西・入住民宿・心齋橋與道頓堀夜未眠",
+      center: [34.6687, 135.4920],
       items: [
         {
           id: "d1-1", time: "12:05", duration: "1 小時",
           name: "抵達關西國際機場 (KIX)", area: "關西機場", cat: "交通",
-          desc: "入境審查、提領行李，出示 Visit Japan Web QR Code。B1 購買或儲值 ICOCA、兌換南海電鐵 Rapi:t 車票。",
+          desc: "入境審查、提領行李，出示 Visit Japan Web QR Code。B1 購買或綁定 ICOCA，搭乘 JR 關空快速免轉車直達「大正站」。",
           map: "Kansai International Airport", lat: 34.4320, lng: 135.2304,
-          transit: "🚆 南海電鐵特急 Rapi:t 約 38 分鐘"
+          transit: "🚆 JR 關空快速 直達「大正站」約 60 分鐘（或南海電鐵至新今宮轉 JR 1 站）"
         },
         {
           id: "d1-2", time: "13:30", duration: "45 分鐘",
-          name: "飯店寄放行李・辦理入住", area: "難波", cat: "住宿",
-          desc: "南海難波站直達飯店大廳，先寄放行李輕裝出發。",
-          map: "Swissotel Nankai Osaka", lat: 34.6644, lng: 135.5013,
-          transit: "🚶 步行約 8 分鐘"
+          name: "大正站 Airbnb 獨棟民宿放行李", area: "大正區", cat: "住宿",
+          desc: "從大正站步行約 4 分鐘抵達 3 層樓包棟民宿，放置行李、熟悉環境並稍作休息。",
+          map: "Taisho Station Osaka", lat: 34.6656, lng: 135.4793,
+          transit: "🚇 地鐵長堀鶴見綠地線 大正 → 心齋橋 直達僅 6 分鐘"
         },
         {
           id: "d1-3", time: "14:30", duration: "2 小時",
           name: "心齋橋筋商店街 & PARCO", area: "心齋橋", cat: "購物",
           desc: "約 600 公尺拱廊商店街，藥妝、服飾一次逛齊；心齋橋 PARCO 6F 有吉卜力共和國、寶可夢中心與 Chiikawa 專賣店。",
           map: "Shinsaibashi PARCO", lat: 34.6723, lng: 135.5011,
-          transit: "🚶 步行約 6 分鐘"
+          transit: "🚶 沿商店街往南步行約 6 分鐘"
         },
         {
           id: "d1-4", time: "17:00", duration: "45 分鐘",
@@ -91,9 +93,9 @@ const TRIP_DEFAULT = {
           transit: "🚶 步行約 2 分鐘至乘船處"
         },
         {
-          id: "d1-6", time: "20:00", duration: "30 分鐘",
-          name: "道頓堀水上觀光船 Tombori Cruise", area: "道頓堀", cat: "景點",
-          desc: "太左衛門橋碼頭搭船，20 分鐘飽覽道頓堀兩岸霓虹夜景（¥1,500，持大阪周遊卡免費）。",
+          id: "d1-6", time: "20:00", duration: "45 分鐘",
+          name: "道頓堀水上觀光船 & 返回大正民宿", area: "道頓堀 → 大正", cat: "景點",
+          desc: "搭 20 分鐘觀光船賞道頓堀霓虹夜景，回程搭地鐵或在大正站旁的 AEON Mall Osaka Dome City 超市買宵夜水果回民宿享用。",
           map: "Tombori River Cruise", lat: 34.6690, lng: 135.5030
         }
       ]
@@ -101,13 +103,13 @@ const TRIP_DEFAULT = {
     {
       city: "USJ · 日本環球影城",
       shortCity: "環球影城",
-      title: "日本環球影城 USJ 夢幻一日暢玩",
+      title: "日本環球影城 USJ 夢幻一日暢玩（大正出發超近！）",
       center: [34.6654, 135.4323],
       items: [
         {
-          id: "d2-1", time: "07:15", duration: "30 分鐘",
-          name: "出發前往日本環球影城", area: "難波 → 環球城", cat: "交通",
-          desc: "阪神難波線至「西九條站」轉乘 JR 夢咲線至「環球城站」。建議提早 1 小時抵達排隊入園。",
+          id: "d2-1", time: "07:20", duration: "20 分鐘",
+          name: "從大正民宿出發前往 USJ", area: "大正 → 環球城", cat: "交通",
+          desc: "住大正站去 USJ 超級快！從「JR 大正站」搭大阪環狀線 2 站到「西九條站」，轉乘 JR 夢咲線至「環球城站」，車程僅約 12 分鐘。",
           map: "Universal City Station", lat: 34.6679, lng: 135.4383,
           transit: "🚶 出站步行 5 分鐘入園"
         },
@@ -141,8 +143,8 @@ const TRIP_DEFAULT = {
         },
         {
           id: "d2-6", time: "20:00", duration: "1.5 小時",
-          name: "Universal CityWalk 晚餐 & 返程", area: "環球城市大道", cat: "美食",
-          desc: "園區外大道有大阪章魚燒博物館、Shake Shack、Red Lobster，吃飽搭 JR 返回難波。",
+          name: "Universal CityWalk 晚餐 & 12分鐘返抵大正", area: "環球城市大道", cat: "美食",
+          desc: "園區外大道有大阪章魚燒博物館、Shake Shack、Red Lobster，吃飽搭 JR 僅 12 分鐘即回到大正站民宿！",
           map: "Universal CityWalk Osaka", lat: 34.6673, lng: 135.4375
         }
       ]
@@ -150,20 +152,20 @@ const TRIP_DEFAULT = {
     {
       city: "Osaka · 大阪城與梅田",
       shortCity: "大阪城・梅田",
-      title: "歷史名城・黑門市場海鮮・梅田絕景",
-      center: [34.6873, 135.5262],
+      title: "歷史名城・黑門市場海鮮・梅田藍天大廈絕景",
+      center: [34.6873, 135.5100],
       items: [
         {
           id: "d3-1", time: "09:00", duration: "2 小時",
           name: "大阪城公園・天守閣 & 御座船", area: "大阪城", cat: "景點",
-          desc: "登上 8 樓展望台俯瞰大阪市景（¥600），再搭金箔「大阪城御座船」繞行內護城河約 20 分鐘。",
+          desc: "從大正站搭地鐵長堀鶴見綠地線免轉車 16 分鐘直達「森之宮站」！登天守閣 8 樓展望台（¥600），搭金箔御座船繞行內護城河。",
           map: "Osaka Castle", lat: 34.6873, lng: 135.5262,
-          transit: "🚇 地鐵長堀鶴見綠地線轉堺筋線 約 20 分鐘"
+          transit: "🚇 地鐵長堀鶴見綠地線轉堺筋線 約 15 分鐘"
         },
         {
           id: "d3-2", time: "11:30", duration: "1.5 小時",
           name: "黑門市場 海鮮早午餐", area: "日本橋", cat: "美食",
-          desc: "被譽為「大阪的廚房」：黑門三平生魚片、現烤帝王蟹腳、海膽干貝、神戶牛串燒、高橋豆漿。",
+          desc: "「大阪的廚房」：黑門三平生魚片、現烤帝王蟹腳、海膽干貝、神戶牛串燒、高橋豆漿。",
           map: "Kuromon Market", lat: 34.6654, lng: 135.5067,
           transit: "🚶 步行約 7 分鐘"
         },
@@ -186,12 +188,12 @@ const TRIP_DEFAULT = {
           name: "梅田藍天大廈 空中庭園展望台", area: "梅田", cat: "景點",
           desc: "40 樓 360 度露天展望台，一次飽覽黃昏夕陽、淀川與百萬璀璨夜景（¥2,000）。",
           map: "Umeda Sky Building", lat: 34.7055, lng: 135.4896,
-          transit: "🚶 步行 10 分鐘回梅田站"
+          transit: "🚶 步行 10 分鐘回 JR 大阪站"
         },
         {
           id: "d3-6", time: "19:30", duration: "1.5 小時",
-          name: "梅田晚餐・燒肉力丸 / 利久牛舌", area: "梅田", cat: "美食",
-          desc: "推薦預訂和牛燒肉吃到飽或 LUCUA 利久牛舌，餐後搭御堂筋線返回難波。",
+          name: "梅田晚餐 & JR 環狀線直達大正站", area: "梅田 → 大正", cat: "美食",
+          desc: "享用和牛燒肉或利久牛舌，餐後從「JR 大阪站」搭大阪環狀線免轉車 11 分鐘直達「大正站」回民宿！",
           map: "LUCUA Osaka", lat: 34.7031, lng: 135.4959
         }
       ]
@@ -203,9 +205,9 @@ const TRIP_DEFAULT = {
       center: [34.9949, 135.7850],
       items: [
         {
-          id: "d4-1", time: "08:00", duration: "55 分鐘",
-          name: "大阪出發前往京都伏見", area: "淀屋橋 → 伏見稻荷", cat: "交通",
-          desc: "地鐵御堂筋線至「淀屋橋站」轉乘京阪本線特急，至丹波橋轉準急直達「伏見稻荷站」。",
+          id: "d4-1", time: "08:00", duration: "1 小時",
+          name: "大正出發前往京都伏見", area: "大正 → 伏見稻荷", cat: "交通",
+          desc: "從大正搭 JR 環狀線至「京橋站」轉乘京阪本線特急（至丹波橋轉準急）直達「伏見稻荷站」，轉乘超順暢！",
           map: "Fushimi-Inari Station", lat: 34.9669, lng: 135.7706,
           transit: "🚶 步行 5 分鐘"
         },
@@ -246,8 +248,8 @@ const TRIP_DEFAULT = {
         },
         {
           id: "d4-7", time: "18:30", duration: "2 小時",
-          name: "先斗町・鴨川晚餐 & 阪急電車返阪", area: "河原町", cat: "美食",
-          desc: "在鴨川旁的先斗町石板巷弄享用京料理或柚子元火鍋，餐後從「京都河原町站」搭阪急特急回大阪。",
+          name: "先斗町・鴨川晚餐 & 返抵大阪大正", area: "河原町 → 大正", cat: "美食",
+          desc: "在鴨川旁的先斗町石板巷弄享用京料理，餐後搭京阪電車至京橋（或阪急至梅田）轉 JR 環狀線回大正民宿。",
           map: "Pontocho Alley", lat: 35.0052, lng: 135.7710
         }
       ]
@@ -259,9 +261,9 @@ const TRIP_DEFAULT = {
       center: [34.6851, 135.8430],
       items: [
         {
-          id: "d5-1", time: "08:30", duration: "40 分鐘",
-          name: "近鐵大阪難波 → 近鐵奈良", area: "難波 → 奈良", cat: "交通",
-          desc: "搭乘近鐵奈良線快速急行，免轉車約 39 分鐘直達近鐵奈良站（¥680）。",
+          id: "d5-1", time: "08:30", duration: "45 分鐘",
+          name: "大正出發 → 近鐵奈良", area: "大正 → 奈良", cat: "交通",
+          desc: "從大正搭地鐵或 JR 至難波/鶴橋，轉乘「近鐵奈良線快速急行」直達近鐵奈良站（或從大正搭 JR 大和路線直達 JR 奈良）。",
           map: "Kintetsu-Nara Station", lat: 34.6842, lng: 135.8276,
           transit: "🚶 沿東向商店街步行 8 分鐘"
         },
@@ -284,19 +286,19 @@ const TRIP_DEFAULT = {
           name: "中谷堂高速搗麻糬 & 釜飯志津香午餐", area: "奈良三條通", cat: "美食",
           desc: "必吃中谷堂剛出爐熱騰騰的艾草紅豆麻糬，午餐享用奈良名物「平宗柿葉壽司」或「志津香釜飯」。",
           map: "Nakatanidou Nara", lat: 34.6822, lng: 135.8287,
-          transit: "🚆 近鐵奈良 → 大阪阿部野橋 約 45 分鐘"
+          transit: "🚆 奈良 → 天王寺（阿倍野）約 35 分鐘"
         },
         {
           id: "d5-5", time: "16:00", duration: "1.5 小時",
           name: "阿倍野 HARUKAS 300 展望台", area: "天王寺", cat: "景點",
-          desc: "300 公尺高玻璃帷幕觀景台，天氣晴朗可遠眺明石海峽大橋與京都方向（¥2,000）。",
+          desc: "300 公尺高玻璃帷幕觀景台，天氣晴朗可遠眺明石海峽大橋與京瓷巨蛋方向（¥2,000）。",
           map: "Abeno Harukas", lat: 34.6463, lng: 135.5135,
           transit: "🚶 穿越天王寺公園步行 12 分鐘"
         },
         {
           id: "d5-6", time: "18:00", duration: "2 小時",
-          name: "新世界・通天閣 & 元祖串炸晚餐", area: "新世界", cat: "美食",
-          desc: "昭和復古霓虹街區拍照！晚餐必吃「八重勝」或「串炸達摩 (だるま)」，現炸酥脆配生高麗菜。",
+          name: "新世界・通天閣 & 元祖串炸晚餐", area: "新世界 → 大正", cat: "美食",
+          desc: "昭和復古霓虹街區拍照！晚餐吃「八重勝」或「串炸達摩 (だるま)」，餐後從 JR 新今宮站搭環狀線 2 站（4 分鐘）就回到大正站民宿！",
           map: "Tsutenkaku", lat: 34.6525, lng: 135.5063
         }
       ]
@@ -309,15 +311,15 @@ const TRIP_DEFAULT = {
       items: [
         {
           id: "d6-1", time: "09:00", duration: "1.5 小時",
-          name: "難波八阪神社（獅子殿）& 最後補貨", area: "難波", cat: "景點",
-          desc: "12 公尺巨型獅子頭舞台超震撼，把厄運吸走、招來金運與勝運！順道在高島屋地下街買伴手禮（Bâton d'or、老爺爺起司蛋糕）。",
+          name: "難波八阪神社（獅子殿）& 京瓷巨蛋周邊散步", area: "難波 / 大正", cat: "景點",
+          desc: "參拜 12 公尺巨型獅子頭舞台吸走厄運、招來勝運；或就近逛民宿步行 8 分鐘的京瓷巨蛋與 TUGBOAT TAISHO 河畔美食廣場。",
           map: "Namba Yasaka Shrine", lat: 34.6614, lng: 135.4966,
-          transit: "🚶 步行 8 分鐘回飯店"
+          transit: "🚶 返回大正民宿整理行李退房"
         },
         {
-          id: "d6-2", time: "10:45", duration: "30 分鐘",
-          name: "飯店退房・搭乘南海電鐵前往臨空城", area: "難波 → 臨空城", cat: "交通",
-          desc: "確認護照、退稅單據、充電器與隨身行動電源，搭南海電鐵空港急行至「臨空城站」（約 38 分鐘）。",
+          id: "d6-2", time: "10:45", duration: "50 分鐘",
+          name: "民宿退房・JR 大正站直達臨空城", area: "大正 → 臨空城", cat: "交通",
+          desc: "檢查 1F～3F 各樓層插座、護照與退稅品。從「JR 大正站」搭乘 JR 關空快速免轉車直達「臨空城站」（約 52 分鐘）。",
           map: "Rinku-Town Station", lat: 34.4109, lng: 135.2994,
           transit: "🚶 步行 6 分鐘"
         },
@@ -348,9 +350,9 @@ const TRIP_DEFAULT = {
   highlights: [
     {
       name: "日本環球影城 USJ",
-      tag: "必訪",
+      tag: "大正出發12分",
       area: "此花區",
-      desc: "超級任天堂世界、咚奇剛國度與哈利波特魔法世界，大人小孩都瘋狂的夢幻樂園。",
+      desc: "從大正站搭 JR 僅 12 分鐘！超級任天堂世界、咚奇剛國度與哈利波特魔法世界。",
       map: "Universal Studios Japan", lat: 34.6654, lng: 135.4323,
       img: "https://images.unsplash.com/photo-1624601573012-efb68931cc8f?auto=format&fit=crop&w=700&q=80"
     },
@@ -380,9 +382,9 @@ const TRIP_DEFAULT = {
     },
     {
       name: "大阪城天守閣",
-      tag: "歷史名城",
+      tag: "大正地鐵直達",
       area: "中央區",
-      desc: "日本三大名城之一，白牆金飾天守閣與護城河金箔御座船。",
+      desc: "從大正搭長堀鶴見綠地線免轉車直達森之宮！白牆金飾天守閣與護城河金箔御座船。",
       map: "Osaka Castle", lat: 34.6873, lng: 135.5262,
       img: "https://images.unsplash.com/photo-1589452271712-64b8a66c7b71?auto=format&fit=crop&w=700&q=80"
     },
@@ -397,6 +399,15 @@ const TRIP_DEFAULT = {
   ],
 
   foods: [
+    {
+      name: "TUGBOAT TAISHO 河畔美食街",
+      tag: "民宿走路6分",
+      warn: "大正站旁",
+      area: "大正區",
+      desc: "就在大正站尻無川河畔的複合貨櫃美食廣場，有精釀啤酒、大阪燒、披薩與河景座位，回民宿前小酌首選！",
+      map: "TUGBOAT TAISHO Osaka", lat: 34.6672, lng: 135.4801,
+      img: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=700&q=80"
+    },
     {
       name: "蟹道樂 道頓堀本店",
       tag: "螃蟹料理",
@@ -434,15 +445,6 @@ const TRIP_DEFAULT = {
       img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80"
     },
     {
-      name: "國產牛燒肉 食べ放題 あぶりや",
-      tag: "和牛燒肉",
-      warn: "需訂位",
-      area: "難波 / 梅田",
-      desc: "大阪超人氣國產牛燒肉吃到飽，橫膈膜、厚切牛舌與甜點品質一流。",
-      map: "Aburiya Dotonbori", lat: 34.6689, lng: 135.5008,
-      img: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=700&q=80"
-    },
-    {
       name: "中谷堂 艾草麻糬",
       tag: "奈良甜點",
       warn: "現搗出爐",
@@ -454,6 +456,13 @@ const TRIP_DEFAULT = {
   ],
 
   savedSpots: [
+    {
+      id: "s0",
+      name: "AEON Mall 大阪巨蛋城 (イオンモール大阪ドームシティ)",
+      area: "大正區 · 民宿步行 8 分鐘",
+      desc: "就在京瓷巨蛋旁的大型商場與大型超市！入住期間買日本草莓、和牛、飲料零食回包棟民宿煮宵夜超方便。",
+      map: "AEON MALL Osaka Dome City", lat: 34.6679, lng: 135.4790
+    },
     {
       id: "s1",
       name: "木津卸賣市場・海鮮丼",
@@ -471,8 +480,8 @@ const TRIP_DEFAULT = {
     {
       id: "s3",
       name: "空庭溫泉 OSAKA BAY TOWER",
-      area: "弁天町 · Osaka",
-      desc: "安土桃山時代主題溫泉樂園，可穿浴衣在千坪空中庭園足湯拍照放鬆。",
+      area: "弁天町（大正站搭 JR 僅 1 站 2 分鐘！）",
+      desc: "離大正站只有 1 站距離！安土桃山時代主題溫泉樂園，可穿浴衣在千坪空中庭園足湯拍照放鬆。",
       map: "Solaniwa Onsen Osaka", lat: 34.6695, lng: 135.4611
     },
     {
@@ -486,12 +495,22 @@ const TRIP_DEFAULT = {
       id: "s5",
       name: "RIKURO 老爺爺起司蛋糕 難波本店",
       area: "難波 · Osaka",
-      desc: "剛出爐會搖晃的雲朵舒芙蕾起司蛋糕，底層有葡萄乾，排「剛出爐隊伍」最美味。",
+      desc: "剛出爐會搖晃的雲朵舒芙蕾起司蛋糕，底層有葡萄乾，買整模回民宿大家一起分食超讚。",
       map: "Rikuro Ojisan no Mise Namba", lat: 34.6660, lng: 135.5015
     }
   ],
 
   reminders: [
+    {
+      icon: "🏠",
+      title: "大正站 Airbnb 包棟民宿入住須知",
+      items: [
+        "房源位置：JR 大阪環狀線／地鐵長堀鶴見綠地線「大正站」步行約 4 分鐘（鄰近京瓷巨蛋、AEON 購物中心與 TUGBOAT 河畔美食街）",
+        "包棟優勢：整棟 3 層樓獨立房屋，前往心齋橋（地鐵直達 6 分）、梅田（JR 直達 11 分）、USJ 環球影城（約 12 分）、關西機場（JR 關空快速直達）都超方便",
+        "日本住宅區夜間 21:00 後請降低音量，出入隨手鎖門，垃圾請依民宿規定分類放置於室內",
+        "Airbnb 房源頁面：https://www.airbnb.com.tw/rooms/1372891258852120566"
+      ]
+    },
     {
       icon: "🛂",
       title: "護照與入境準備",
@@ -507,18 +526,8 @@ const TRIP_DEFAULT = {
       title: "日幣、交通卡與支付",
       items: [
         "提前在台灣換好日幣現金，神社御守、黑門市場部分攤位、奈良鹿仙貝只收現金",
-        "iPhone 旅客可直接於 Apple 錢包內加入「ICOCA」並以信用卡儲值，搭地鐵、私鐵、超商感應超方便",
-        "信用卡與行動支付（PayPay / 玉山全支付）多數百貨藥妝皆可用，出發前確認海外刷卡回饋",
+        "iPhone 旅客可直接於 Apple 錢包內加入「ICOCA」並以信用卡儲值，搭地鐵、JR 環狀線、私鐵、超商感應超方便",
         "準備一個零錢包放 ¥100、¥500 硬幣，扭蛋機、投幣式置物櫃與販賣機常會用到"
-      ]
-    },
-    {
-      icon: "💊",
-      title: "常備藥品與穿著",
-      items: [
-        "感冒藥、腸胃藥、止痛退燒、過敏藥、OK 繃、休足時間貼布（每天步行約 1.5～2 萬步！）",
-        "慢性病用藥請帶原包裝，並準備好英文藥名清單",
-        "行動電源必須「隨身攜帶上飛機」，不可託運，且飛機上請勿使用行動電源充電"
       ]
     },
     {
@@ -534,8 +543,8 @@ const TRIP_DEFAULT = {
   ],
 
   checklist: [
-    { cat: "證件與票券", items: ["護照正本（效期 6 個月以上）", "Visit Japan Web QR 截圖", "日幣現金 & 零錢包", "海外高回饋信用卡 2 張", "USJ 門票 + 快速通關 QR", "旅遊平安險＋不便險"] },
-    { cat: "3C 與網路", items: ["手機 + 充電線", "行動電源（放隨身包）", "日本 eSIM / 網卡", "Apple Wallet 綁定 ICOCA", "相機 & 記憶卡"] },
-    { cat: "衣物與隨身物", items: ["好走防滑的運動鞋", "換洗衣物 & 保暖外套", "休足時間 / 足貼", "常備藥品（腸胃・止痛・感冒）", "摺疊購物袋 / 環保袋", "晴雨兩用摺疊傘"] }
+    { cat: "證件與票券", items: ["護照正本（效期 6 個月以上）", "Visit Japan Web QR 截圖", "Airbnb 入住指南 & 門鎖密碼截圖", "日幣現金 & 零錢包", "海外高回饋信用卡 2 張", "USJ 門票 + 快速通關 QR", "旅遊平安險＋不便險"] },
+    { cat: "3C 與網路", items: ["手機 + 充電線", "行動電源（放隨身包）", "日本 eSIM / 網卡", "Apple Wallet 綁定 ICOCA", "多孔延長線 / 充電頭"] },
+    { cat: "衣物與隨身物", items: ["好走防滑的運動鞋", "換洗衣物 & 保暖外套", "休足時間 / 足貼", "常備藥品（腸胃・止痛・感冒）", "摺疊購物袋（去 AEON 超市採買用）", "晴雨兩用摺疊傘"] }
   ]
 };
