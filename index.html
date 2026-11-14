@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#1f1d2b" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>大阪 6 天 5 夜行程書</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow" id="subtitle"></p>
+      <h1 id="title"></h1>
+      <div class="hero-meta">
+        <label class="date-pick">📅 出發日
+          <input type="date" id="startDate" />
+        </label>
+        <span id="countdown" class="countdown"></span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 行程 -->
+    <section id="view-plan" class="view active">
+      <nav class="day-tabs" id="dayTabs"></nav>
+      <div id="dayContent"></div>
+    </section>
+
+    <!-- 清單 -->
+    <section id="view-check" class="view">
+      <div class="section-head">
+        <h2>行前清單</h2>
+        <span class="progress-text" id="checkProgress"></span>
+      </div>
+      <div class="progress"><div id="checkBar"></div></div>
+      <div id="checklist"></div>
+    </section>
+
+    <!-- 記帳 -->
+    <section id="view-money" class="view">
+      <div class="section-head"><h2>旅費記帳</h2></div>
+      <div class="card total-card">
+        <div>
+          <p class="muted">總花費</p>
+          <p class="big" id="totalJpy">¥0</p>
+          <p class="muted" id="totalTwd">≈ NT$0</p>
+        </div>
+        <label class="rate">匯率 1 JPY =
+          <input type="number" step="0.001" id="rate" /> TWD
+        </label>
+      </div>
+      <form id="expenseForm" class="card expense-form">
+        <select id="expDay"></select>
+        <select id="expCat">
+          <option>🍜 餐飲</option><option>🚆 交通</option><option>🛍️ 購物</option>
+          <option>🎫 門票</option><option>🏨 住宿</option><option>📦 其他</option>
+        </select>
+        <input id="expName" placeholder="項目，例如：章魚燒" required />
+        <input id="expAmt" type="number" min="0" placeholder="金額 ¥" required />
+        <button type="submit">新增</button>
+      </form>
+      <div id="catSummary" class="cat-summary"></div>
+      <ul id="expenseList" class="expense-list"></ul>
+    </section>
+
+    <!-- 資訊 -->
+    <section id="view-info" class="view">
+      <div class="section-head"><h2>旅遊資訊</h2></div>
+      <div id="infoList"></div>
+      <div class="card">
+        <h3>📝 我的備忘錄</h3>
+        <textarea id="notes" placeholder="航班編號、飯店訂房代碼、想買的東西…"></textarea>
+      </div>
+      <button class="ghost-btn" id="resetBtn">重設所有紀錄</button>
+    </section>
+  </main>
+
+  <nav class="bottom-nav">
+    <button data-view="plan" class="active"><span>🗺️</span>行程</button>
+    <button data-view="check"><span>✅</span>清單</button>
+    <button data-view="money"><span>💴</span>記帳</button>
+    <button data-view="info"><span>ℹ️</span>資訊</button>
+  </nav>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+

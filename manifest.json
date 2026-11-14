@@ -1,0 +1,12 @@
+{
+  "name": "大阪 6 天 5 夜行程書",
+  "short_name": "大阪行程",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#1f1d2b",
+  "theme_color": "#1f1d2b",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
+
