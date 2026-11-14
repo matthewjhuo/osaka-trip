@@ -256,51 +256,103 @@ const TRIP_DEFAULT = {
       ]
     },
     {
-      city: "Nara · 奈良與新世界",
-      shortCity: "奈良・新世界",
-      title: "奈良小鹿餵食・東大寺・通天閣串炸",
-      center: [34.6851, 135.8430],
-      items: [
+      "city": "Kobe · 神戶一日遊",
+      "shortCity": "神戶・港灣",
+      "title": "北野異人館散策・神戶牛午餐・南京町與港灣夜景",
+      "center": [
+        34.685,
+        135.19
+      ],
+      "items": [
         {
-          id: "d5-1", time: "08:30", duration: "45 分鐘",
-          name: "大正出發 → 近鐵奈良", area: "大正 → 奈良", cat: "交通",
-          desc: "從大正搭地鐵或 JR 至難波/鶴橋，轉乘「近鐵奈良線快速急行」直達近鐵奈良站（或從大正搭 JR 大和路線直達 JR 奈良）。",
-          map: "Kintetsu-Nara Station", lat: 34.6842, lng: 135.8276,
-          transit: "🚶 沿東向商店街步行 8 分鐘"
+          "id": "d5-1",
+          "time": "09:00",
+          "duration": "1 小時 15 分",
+          "name": "大正出發 → 神戶三之宮",
+          "area": "大正 → 三之宮",
+          "cat": "交通",
+          "desc": "JR 大正站搭大阪環狀線至大阪站，轉 JR 神戶線新快速至三之宮。預留候車與轉乘時間，實際班次以當日導航為準。",
+          "map": "Sannomiya Station Kobe",
+          "lat": 34.6946,
+          "lng": 135.1955,
+          "transit": "🚶 沿北野坂上坡步行約 20–25 分鐘；不想爬坡可搭 CITY LOOP"
         },
         {
-          id: "d5-2", time: "09:30", duration: "1.5 小時",
-          name: "奈良公園 與小鹿互動", area: "奈良", cat: "景點",
-          desc: "買鹿仙貝（¥200）餵食野生梅花鹿，向小鹿敬禮牠們也會點頭回禮！請收好紙鈔與地圖。",
-          map: "Nara Park", lat: 34.6850, lng: 135.8430,
-          transit: "🚶 步行 6 分鐘"
+          "id": "d5-2",
+          "time": "10:30",
+          "duration": "1.5 小時",
+          "name": "北野異人館街・北野坂散步",
+          "area": "北野",
+          "cat": "景點",
+          "desc": "慢逛洋風街景，找咖啡館休息。風見雞之館目前公告整修休館，本行程以外觀散步為主；各館開放情況請出發前再確認。",
+          "map": "Kitano Ijinkan Kobe",
+          "lat": 34.7015,
+          "lng": 135.1897,
+          "transit": "🚶 下坡回三宮餐廳區，預留約 20–25 分鐘"
         },
         {
-          id: "d5-3", time: "11:00", duration: "1.5 小時",
-          name: "東大寺・大佛殿 & 春日大社", area: "奈良", cat: "景點",
-          desc: "世界最大木造建築東大寺參拜 15 公尺高盧舍那大佛（¥800），鑽大佛鼻孔柱祈求平安；順遊春日大社萬燈籠。",
-          map: "Todai-ji", lat: 34.6890, lng: 135.8399,
-          transit: "🚶 步行 12 分鐘回商店街"
+          "id": "d5-3",
+          "time": "12:30",
+          "duration": "1.5 小時",
+          "name": "三宮午餐・神戶牛或洋食",
+          "area": "三宮",
+          "cat": "美食",
+          "desc": "想吃神戶牛可事先預約午間套餐，確認肉品標示與預算；也可選漢堡排或洋食。當天為週日，預留候位彈性，餐廳依實際訂位決定。",
+          "map": "Sannomiya Center Gai Shopping Street",
+          "lat": 34.6918,
+          "lng": 135.1924,
+          "transit": "🚶 沿三宮中心街往舊居留地，預留約 15 分鐘"
         },
         {
-          id: "d5-4", time: "12:45", duration: "1.5 小時",
-          name: "中谷堂高速搗麻糬 & 釜飯志津香午餐", area: "奈良三條通", cat: "美食",
-          desc: "必吃中谷堂剛出爐熱騰騰的艾草紅豆麻糬，午餐享用奈良名物「平宗柿葉壽司」或「志津香釜飯」。",
-          map: "Nakatanidou Nara", lat: 34.6822, lng: 135.8287,
-          transit: "🚆 奈良 → 天王寺（阿倍野）約 35 分鐘"
+          "id": "d5-4",
+          "time": "14:15",
+          "duration": "1.5 小時",
+          "name": "舊居留地・元町逛街與南京町點心",
+          "area": "舊居留地・南京町",
+          "cat": "購物",
+          "desc": "欣賞西式街景，再逛元町與南京町。可分食豬肉包、餃子等點心，依胃口與現場排隊情況選擇，不必每攤都吃。",
+          "map": "Nankinmachi Kobe",
+          "lat": 34.6883,
+          "lng": 135.1902,
+          "transit": "🚶 往美利堅公園步行約 15–20 分鐘"
         },
         {
-          id: "d5-5", time: "16:00", duration: "1.5 小時",
-          name: "阿倍野 HARUKAS 300 展望台", area: "天王寺", cat: "景點",
-          desc: "300 公尺高玻璃帷幕觀景台，天氣晴朗可遠眺明石海峽大橋與京瓷巨蛋方向（¥2,000）。",
-          map: "Abeno Harukas", lat: 34.6463, lng: 135.5135,
-          transit: "🚶 穿越天王寺公園步行 12 分鐘"
+          "id": "d5-5",
+          "time": "16:00",
+          "duration": "1.5 小時",
+          "name": "美利堅公園・BE KOBE 與港塔外觀",
+          "area": "神戶港",
+          "cat": "景點",
+          "desc": "沿海邊散步，拍 BE KOBE 地標與神戶港塔外觀，欣賞黃昏到夜晚的港灣景色。登塔需另確認票價與時段；十二月海邊風大，記得保暖。",
+          "map": "BE KOBE Meriken Park",
+          "lat": 34.6802,
+          "lng": 135.188,
+          "transit": "🚶 沿港邊往 Harborland／MOSAIC，預留約 20 分鐘"
         },
         {
-          id: "d5-6", time: "18:00", duration: "2 小時",
-          name: "新世界・通天閣 & 元祖串炸晚餐", area: "新世界 → 大正", cat: "美食",
-          desc: "昭和復古霓虹街區拍照！晚餐吃「八重勝」或「串炸達摩 (だるま)」，餐後從 JR 新今宮站搭環狀線 2 站（4 分鐘）就回到大正站民宿！",
-          map: "Tsutenkaku", lat: 34.6525, lng: 135.5063
+          "id": "d5-6",
+          "time": "18:00",
+          "duration": "1.5 小時",
+          "name": "Harborland・umie MOSAIC 港灣夜景晚餐",
+          "area": "Harborland",
+          "cat": "美食",
+          "desc": "在 MOSAIC 一帶看港灣燈光、吃晚餐與買伴手禮。依現場座位選餐廳，飯後慢慢散步，不再安排遠距離景點。",
+          "map": "Kobe Harborland umie MOSAIC",
+          "lat": 34.6802,
+          "lng": 135.1844,
+          "transit": "🚶 步行至 JR 神戶站，預留約 15 分鐘"
+        },
+        {
+          "id": "d5-7",
+          "time": "20:00",
+          "duration": "1 小時 15 分",
+          "name": "JR 神戶站 → 大阪 → 大正民宿",
+          "area": "神戶 → 大正",
+          "cat": "交通",
+          "desc": "JR 神戶站搭 JR 神戶線新快速至大阪站，再轉大阪環狀線回大正。預留轉乘時間，回民宿後整理隔日退房行李。",
+          "map": "Kobe Station Hyogo",
+          "lat": 34.6795,
+          "lng": 135.178
         }
       ]
     },
@@ -383,12 +435,14 @@ const TRIP_DEFAULT = {
       img: "https://images.unsplash.com/photo-1589452271712-64b8a66c7b71?auto=format&fit=crop&w=700&q=80"
     },
     {
-      name: "奈良公園 & 東大寺",
-      tag: "療癒必訪",
-      area: "奈良",
-      desc: "上千隻親人小鹿在草地漫步，搭配世界最大木造建築東大寺大佛。",
-      map: "Nara Park", lat: 34.6850, lng: 135.8430,
-      img: "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?auto=format&fit=crop&w=700&q=80"
+      "name": "神戶港・BE KOBE",
+      "tag": "港灣散策",
+      "area": "神戶・美利堅公園",
+      "desc": "美利堅公園的 BE KOBE 地標與港灣街景，可沿海岸步行接續 Harborland 夜景。",
+      "map": "BE KOBE Meriken Park",
+      "lat": 34.6802,
+      "lng": 135.188,
+      "img": "https://www.feel-kobe.jp/wp-content/uploads/2023/02/bekobe.jpg"
     }
   ],
 
@@ -439,13 +493,15 @@ const TRIP_DEFAULT = {
       img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80"
     },
     {
-      name: "中谷堂 艾草麻糬",
-      tag: "奈良甜點",
-      warn: "現搗出爐",
-      area: "奈良商店街",
-      desc: "日本電視冠軍高速搗麻糬名店，熱呼呼軟Q外皮包裹綿密十勝紅豆餡與黃豆粉。",
-      map: "Nakatanidou", lat: 34.6822, lng: 135.8287,
-      img: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=700&q=80"
+      "name": "南京町・中華街點心",
+      "tag": "神戶小吃",
+      "warn": "週末預留候位時間",
+      "area": "神戶・南京町",
+      "desc": "在南京町依胃口選擇豬肉包、餃子等點心，適合和旅伴分食；店家與營業時間以現場為準。",
+      "map": "Nankinmachi Kobe",
+      "lat": 34.6883,
+      "lng": 135.1902,
+      "img": "https://www.feel-kobe.jp/wp-content/uploads/2022/10/%E5%8D%97%E4%BA%AC%E7%94%BA.jpg"
     }
   ],
 
