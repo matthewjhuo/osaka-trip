@@ -6,7 +6,7 @@
   const gmapUrl = (q) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
 
   // ---------- Storage ----------
-  const STORAGE_KEY = "osaka_v3_state";
+  const STORAGE_KEY = "osaka_v4_state";
   const loadState = () => {
     try {
       const raw = JSON.parse(localStorage.getItem(STORAGE_KEY));
@@ -33,7 +33,7 @@
   const WEEK_TC = ["日", "一", "二", "三", "四", "五", "六"];
 
   const getDayDate = (idx) => {
-    const base = new Date((state.startDate || "2026-12-10") + "T00:00:00");
+    const base = new Date((state.startDate || "2026-12-09") + "T00:00:00");
     base.setDate(base.getDate() + idx);
     return base;
   };
@@ -258,7 +258,7 @@
 
   // 即時秒數倒數計時器 (Video 2)
   function updateLiveCountdown() {
-    const target = new Date(`${state.startDate || "2026-12-10"}T${state.departureTime || "08:30"}:00`);
+    const target = new Date(`${state.startDate || "2026-12-09"}T${state.departureTime || "09:40"}:00`);
     const now = new Date();
     const diff = target - now;
     const el = $("#liveCountdown");
@@ -1103,8 +1103,8 @@
     $("#settingsForm").onsubmit = (e) => {
       e.preventDefault();
       const fd = new FormData(e.target);
-      state.startDate = fd.get("startDate") || "2026-12-10";
-      state.departureTime = fd.get("departureTime") || "08:30";
+      state.startDate = fd.get("startDate") || "2026-12-09";
+      state.departureTime = fd.get("departureTime") || "09:40";
       state.rate = parseFloat(fd.get("rate")) || 0.215;
       saveState();
       renderDateHeader();
