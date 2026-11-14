@@ -1,24 +1,21 @@
 :root {
   --bg: #f6f1e7;
-  --bg-soft: #efe7d8;
+  --bg-deep: #ece3d3;
   --card: #fbf8f2;
-  --card-warm: #f3eadb;
-  --border: #e3d8c6;
-  --border-strong: #d3c3ab;
-  --ink: #2c2119;
-  --ink-soft: #5c4b3c;
-  --muted: #8c7b6a;
-  --espresso: #261c15;
-  --gold: #c69a52;
-  --gold-soft: #efe1c4;
-  --terracotta: #b8533c;
-  --blue-accent: #1d63b8;
-  --green-soft: #e6f4ea;
-  --green-ink: #1e6f43;
-  --radius-lg: 22px;
-  --radius-md: 16px;
-  --radius-sm: 12px;
-  --shadow: 0 6px 22px rgba(44, 33, 25, 0.06);
+  --card-warm: #f3ebdc;
+  --border: #e4d9c6;
+  --border-strong: #d5c5ac;
+  --ink: #2b2118;
+  --ink-soft: #5c4b3b;
+  --muted: #8c7a67;
+  --espresso: #281e16;
+  --gold: #c49648;
+  --terracotta: #b54d36;
+  --terracotta-bg: #f3dfd9;
+  --radius-xl: 22px;
+  --radius-lg: 18px;
+  --radius-md: 14px;
+  --shadow: 0 4px 18px rgba(43, 33, 24, 0.045);
 }
 
 * {
@@ -29,20 +26,20 @@
 }
 
 body {
-  background: #e9e1d2;
+  background: #e8dfd0;
   color: var(--ink);
   font-family: "Noto Sans TC", -apple-system, BlinkMacSystemFont, sans-serif;
-  line-height: 1.5;
+  line-height: 1.55;
   overflow-x: hidden;
 }
 
 .app-shell {
-  max-width: 520px;
+  max-width: 480px;
   min-height: 100dvh;
   margin: 0 auto;
   background: var(--bg);
   padding-bottom: calc(96px + env(safe-area-inset-bottom));
-  box-shadow: 0 0 40px rgba(44, 33, 25, 0.12);
+  box-shadow: 0 0 36px rgba(43, 33, 24, 0.1);
   position: relative;
 }
 
@@ -52,11 +49,16 @@ body {
   font-weight: 600;
 }
 
+.serif-en {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 700;
+}
+
 .muted { color: var(--muted); }
 .muted-xs { color: var(--muted); font-size: 12px; }
 .hidden { display: none !important; }
 
-/* ==================== 頂部標題與日期列 (Video 1) ==================== */
+/* ==================== 頂部固定標題與日期膠囊列 (影片 1) ==================== */
 .top-header {
   padding: calc(16px + env(safe-area-inset-top)) 18px 14px;
   background: var(--bg);
@@ -74,27 +76,30 @@ body {
 }
 
 .brand-eyebrow {
-  font-family: "Cormorant Garamond", "Noto Serif TC", serif;
-  font-style: italic;
-  font-size: 13px;
+  font-size: 12.5px;
   color: var(--muted);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
+}
+
+.brand-eyebrow .serif-italic {
+  font-size: 14px;
 }
 
 .brand-title {
   font-family: "Noto Serif TC", serif;
-  font-size: 27px;
+  font-size: 26px;
   font-weight: 700;
-  letter-spacing: 0.02em;
   color: var(--ink);
+  letter-spacing: 0.02em;
+  line-height: 1.2;
 }
 
-.brand-title .serif-italic {
+.brand-title .serif-en {
   font-size: 31px;
   margin-right: 4px;
 }
 
-.icon-btn {
+.gear-btn {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -109,19 +114,19 @@ body {
 /* 日期膠囊列 */
 .date-strip {
   display: flex;
-  gap: 9px;
+  gap: 8px;
   overflow-x: auto;
-  padding: 2px 2px 10px;
+  padding: 2px 1px 10px;
   scrollbar-width: none;
 }
 .date-strip::-webkit-scrollbar { display: none; }
 
 .date-pill {
-  flex: 0 0 64px;
+  flex: 0 0 62px;
   border-radius: 15px;
   border: 1px solid var(--border);
   background: var(--card);
-  padding: 8px 6px;
+  padding: 8px 4px 7px;
   text-align: center;
   cursor: pointer;
   color: var(--ink);
@@ -134,11 +139,12 @@ body {
   letter-spacing: 0.04em;
   display: flex;
   justify-content: center;
+  align-items: baseline;
   gap: 2px;
 }
 
 .date-pill .dp-top sup {
-  font-size: 9px;
+  font-size: 8.5px;
   color: var(--gold);
   font-weight: 700;
 }
@@ -147,12 +153,12 @@ body {
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 25px;
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1.08;
   margin: 2px 0;
 }
 
 .date-pill .dp-month {
-  font-size: 11px;
+  font-size: 10.5px;
   color: var(--muted);
 }
 
@@ -160,17 +166,16 @@ body {
   background: var(--espresso);
   border-color: var(--espresso);
   color: #fff;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(38, 28, 21, 0.22);
+  box-shadow: 0 5px 14px rgba(40, 30, 22, 0.2);
 }
 
 .date-pill.active .dp-top,
 .date-pill.active .dp-month {
-  color: #d6c7b4;
+  color: #d4c5b2;
 }
 
 .date-pill.active .dp-top sup {
-  color: #e6b96e;
+  color: #e4b668;
 }
 
 /* 進度滑桿列 */
@@ -182,13 +187,13 @@ body {
 }
 
 .circle-arrow {
-  width: 32px;
-  height: 32px;
+  width: 31px;
+  height: 31px;
   border-radius: 50%;
   border: 1px solid var(--border);
   background: var(--card);
   color: var(--ink-soft);
-  font-size: 18px;
+  font-size: 17px;
   cursor: pointer;
   display: grid;
   place-items: center;
@@ -200,11 +205,11 @@ body {
 }
 
 .slider-track {
-  height: 4px;
+  height: 3.5px;
   background: var(--border);
   border-radius: 99px;
   position: relative;
-  margin: 8px 0 4px;
+  margin: 8px 0 5px;
 }
 
 .slider-fill {
@@ -216,12 +221,10 @@ body {
 }
 
 .slider-dot {
-  width: 12px;
-  height: 12px;
+  width: 13px;
+  height: 13px;
   border-radius: 50%;
   background: var(--espresso);
-  border: 2px solid var(--card);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.25);
   position: absolute;
   top: 50%;
   left: 0%;
@@ -236,28 +239,28 @@ body {
   color: var(--muted);
 }
 
-/* ==================== 主內容與共用卡片 ==================== */
+/* ==================== 主內容與通用米色卡片 ==================== */
 .main-content {
   padding: 16px 18px 24px;
 }
 
 .view {
   display: none;
-  animation: fadeUp 0.22s ease;
+  animation: fadeUp 0.2s ease;
 }
 .view.active {
   display: block;
 }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(6px); }
+  from { opacity: 0; transform: translateY(5px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .cream-card {
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   padding: 18px;
   margin-bottom: 14px;
   box-shadow: var(--shadow);
@@ -274,14 +277,16 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 16px;
+  font-family: "Noto Serif TC", serif;
+  font-size: 15.5px;
+  color: var(--ink);
 }
 
 .text-link {
   border: 0;
   background: none;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 12.5px;
   cursor: pointer;
   font-family: inherit;
 }
@@ -290,25 +295,26 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  margin: 18px 4px 10px;
+  margin: 18px 2px 10px;
 }
 
 .section-caption-row h2,
 .section-caption-row h3 {
   font-family: "Noto Serif TC", serif;
-  font-size: 18px;
+  font-size: 17.5px;
   font-weight: 700;
+  color: var(--ink);
 }
 
-/* ==================== 首頁元件 (Video 1) ==================== */
+/* ==================== 1. 首頁元件 (影片 1 00:01–00:07, 00:15–00:17) ==================== */
 .dest-hero-card {
-  background: linear-gradient(135deg, #efe5d4 0%, #f7f1e6 100%);
+  background: linear-gradient(135deg, #efe6d5 0%, #f7f1e5 100%);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   padding: 16px;
   display: grid;
-  grid-template-columns: 1.05fr 1.25fr;
-  gap: 12px;
+  grid-template-columns: 1fr 1.22fr;
+  gap: 10px;
   align-items: center;
   margin-bottom: 12px;
   position: relative;
@@ -318,27 +324,27 @@ body {
 
 .dest-watermark {
   position: absolute;
-  left: 14px;
-  top: 6px;
+  left: 16px;
+  top: 8px;
   font-family: "Cormorant Garamond", serif;
   font-style: italic;
-  font-size: 28px;
-  color: rgba(110, 80, 61, 0.16);
+  font-size: 27px;
+  color: rgba(110, 82, 59, 0.18);
   pointer-events: none;
 }
 
 .flight-svg {
   width: 100%;
-  max-width: 130px;
+  max-width: 136px;
   display: block;
-  margin-top: 12px;
+  margin-top: 14px;
 }
 
 .dest-today-box {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 12px 14px;
+  padding: 13px 15px;
 }
 
 .dest-today-box .today-tag {
@@ -350,57 +356,66 @@ body {
 
 .dest-today-box .today-date {
   font-family: "Noto Serif TC", serif;
-  font-size: 19px;
+  font-size: 18px;
   font-weight: 700;
-  margin: 2px 0 4px;
+  margin: 3px 0 4px;
+  color: var(--ink);
 }
 
 .dest-today-box .today-date b {
   font-family: "Cormorant Garamond", serif;
-  font-size: 23px;
-  margin-right: 4px;
+  font-size: 24px;
+  margin-right: 5px;
 }
 
 .dest-today-box .today-city {
-  font-size: 12px;
-  color: var(--ink-soft);
+  font-size: 12.5px;
+  color: var(--muted);
 }
 
+/* 出團資訊條 */
 .flight-bar-btn {
   width: 100%;
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 15px;
-  padding: 12px 16px;
+  padding: 13px 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font: inherit;
-  font-size: 14px;
-  color: var(--ink);
+  font-size: 13.5px;
+  color: var(--ink-soft);
   cursor: pointer;
   margin-bottom: 14px;
   box-shadow: var(--shadow);
 }
 
+.flight-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
 /* 今日行程預覽列表 */
 .preview-item {
   display: grid;
-  grid-template-columns: 52px 1fr;
+  grid-template-columns: 54px 1fr;
   gap: 10px;
-  padding: 10px 0;
-  border-top: 1px solid var(--border);
+  padding: 11px 0;
+  border-top: 1px solid #ede4d4;
 }
 
 .preview-time {
   font-family: "Cormorant Garamond", serif;
-  font-size: 15px;
-  font-weight: 700;
+  font-size: 15.5px;
+  font-weight: 600;
   color: var(--muted);
-  padding-top: 2px;
+  padding-top: 1px;
 }
 
 .preview-name {
+  font-family: "Noto Serif TC", serif;
   font-weight: 700;
   font-size: 15px;
   color: var(--ink);
@@ -414,30 +429,30 @@ body {
 
 .more-stops-btn {
   width: 100%;
-  margin-top: 8px;
-  padding: 9px;
+  margin-top: 4px;
+  padding: 10px 0 2px;
   border: 0;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid #ede4d4;
   background: none;
   color: var(--muted);
   font: inherit;
-  font-size: 13px;
+  font-size: 12.5px;
   cursor: pointer;
 }
 
-/* Bento 功能總覽網格 */
+/* 功能總覽 2x2 Bento Grid (影片 1 00:01–00:02 & 00:16) */
 .bento-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
-  margin-bottom: 22px;
+  margin-bottom: 12px;
 }
 
 .bento-card {
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 16px;
+  border-radius: var(--radius-xl);
+  padding: 18px 16px;
   text-align: left;
   font: inherit;
   color: var(--ink);
@@ -450,12 +465,11 @@ body {
 }
 
 .bento-card:active {
-  transform: scale(0.98);
+  transform: scale(0.985);
 }
 
-.bento-icon {
-  font-size: 28px;
-  margin-bottom: 8px;
+.bento-svg {
+  margin-bottom: 12px;
 }
 
 .bento-en {
@@ -468,6 +482,7 @@ body {
 .bento-card strong {
   font-family: "Noto Serif TC", serif;
   font-size: 17px;
+  color: var(--ink);
 }
 
 .bento-card small {
@@ -480,540 +495,103 @@ body {
   grid-column: 1 / -1;
   flex-direction: row;
   align-items: center;
-  gap: 14px;
-  background: linear-gradient(135deg, #efe2c8 0%, #f8f1e3 100%);
-  border-color: #dcc8a4;
+  gap: 16px;
+  background: linear-gradient(135deg, #f1e4c8 0%, #e7d4ae 100%);
+  border-color: #d8c093;
 }
 
-.bento-wide .bento-icon {
+.bento-wide .bento-svg {
   margin-bottom: 0;
-  font-size: 32px;
 }
 
-.bento-wide div {
+.bento-wide-text {
   display: flex;
   flex-direction: column;
+  gap: 1px;
 }
 
-/* ==================== 影片 2 精選看板區 (倒數、航班、天氣、景點畫廊、住宿) ==================== */
-.countdown-banner {
-  border-radius: var(--radius-lg);
-  padding: 22px 16px 18px;
-  text-align: center;
-  color: #fff;
-  background:
-    linear-gradient(180deg, rgba(25, 32, 48, 0.48), rgba(25, 32, 48, 0.72)),
-    url("https://images.unsplash.com/photo-1590559899731-a382839e5549?auto=format&fit=crop&w=1000&q=80") center/cover;
-  box-shadow: var(--shadow);
-  margin-bottom: 14px;
-}
-
-.cd-subtitle {
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  opacity: 0.92;
-  margin-bottom: 10px;
-}
-
-.cd-glass-box {
-  background: rgba(255, 255, 255, 0.94);
-  color: var(--ink);
-  border-radius: 18px;
-  padding: 12px 16px;
-  max-width: 320px;
-  margin: 0 auto 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
-}
-
-.cd-label {
-  font-size: 13px;
-  color: var(--muted);
-  font-weight: 700;
-}
-
-.cd-timer {
-  font-size: 21px;
-  font-weight: 800;
-  margin-top: 2px;
-}
-
-.cd-timer em {
-  font-style: normal;
-  color: var(--terracotta);
-}
-
-.cd-badges {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.cd-badge {
-  background: rgba(255, 255, 255, 0.22);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 99px;
-  padding: 4px 12px;
-  font-size: 12px;
-}
-
-/* 快速跳轉膠囊列 (Video 2) */
-.quick-pills {
-  display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  padding: 6px 2px 12px;
-  scrollbar-width: none;
-}
-.quick-pills::-webkit-scrollbar { display: none; }
-
-.quick-pills button {
-  flex: 0 0 auto;
-  border: 1px solid var(--border);
-  background: var(--card);
-  color: var(--ink);
-  border-radius: 99px;
-  padding: 7px 14px;
-  font: inherit;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.quick-pills button.active {
-  background: var(--espresso);
-  color: #fff;
-  border-color: var(--espresso);
-}
-
-.showcase-block {
-  margin-top: 16px;
-}
-
-.block-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.block-head h3 {
-  font-size: 18px;
-  font-weight: 700;
-}
-
-/* 航班卡片 (Video 2) */
-.flight-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 16px;
-  margin-bottom: 12px;
-  box-shadow: var(--shadow);
-}
-
-.flight-badge {
-  display: inline-block;
-  background: #e8f0fe;
-  color: var(--blue-accent);
-  font-size: 12px;
-  font-weight: 700;
-  padding: 3px 10px;
-  border-radius: 8px;
-  margin-bottom: 8px;
-}
-
-.flight-Badge-return {
-  background: #fce8e6;
-  color: #c5221f;
-}
-
-.flight-code {
-  font-size: 17px;
-  font-weight: 700;
-}
-
-.flight-route {
-  font-size: 13px;
-  color: var(--muted);
-  margin: 2px 0 8px;
-}
-
-.flight-times {
-  font-size: 26px;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  margin-bottom: 10px;
-}
-
-.flight-remind {
-  background: #eef7f2;
-  border: 1px solid #cce8d6;
-  color: #1b5e3a;
-  border-radius: 12px;
-  padding: 9px 12px;
-  font-size: 13px;
-  font-weight: 600;
-}
-
-/* 天氣卡片 (Video 2) */
-.weather-strip {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(62px, 1fr));
-  gap: 6px;
-  overflow-x: auto;
-  text-align: center;
-  padding-bottom: 10px;
-}
-
-.w-day {
-  padding: 6px 4px;
-  border-radius: 12px;
-  background: var(--bg);
-}
-
-.w-day .w-date {
-  font-size: 12px;
-  color: var(--muted);
-}
-
-.w-day .w-icon {
-  font-size: 24px;
-  margin: 6px 0;
-}
-
-.w-day .w-temp {
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.w-day .w-rain {
-  font-size: 11px;
-  color: #2b7de9;
-  margin-top: 3px;
-}
-
-.weather-foot {
-  margin-top: 8px;
-  padding-top: 8px;
-  border-top: 1px solid var(--border);
-  font-size: 12px;
-  color: var(--green-ink);
-  text-align: center;
-}
-
-/* 景點與美食橫向照片卡片 (Video 2) */
-.photo-carousel {
-  display: flex;
-  gap: 12px;
-  overflow-x: auto;
-  padding: 2px 2px 10px;
-  scrollbar-width: none;
-}
-.photo-carousel::-webkit-scrollbar { display: none; }
-
-.photo-card {
-  flex: 0 0 236px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  display: flex;
-  flex-direction: column;
-}
-
-.photo-card img {
-  width: 100%;
-  height: 138px;
-  object-fit: cover;
-}
-
-.photo-card-body {
-  padding: 12px 14px 14px;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.photo-card-body h4 {
-  font-size: 16px;
-  margin-bottom: 6px;
-}
-
-.tag-row {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-  margin-bottom: 8px;
-}
-
-.badge-blue {
-  background: #e8f0fe;
-  color: var(--blue-accent);
-  font-size: 11px;
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: 6px;
-}
-
-.badge-warn {
-  background: #fef0e6;
-  color: #c25100;
-  font-size: 11px;
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: 6px;
-}
-
-.photo-card-body p {
-  font-size: 13px;
-  color: var(--ink-soft);
-  flex: 1;
-  margin-bottom: 12px;
-}
-
-.photo-card-actions {
-  display: flex;
-  gap: 6px;
-}
-
-.map-blue-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  background: var(--espresso);
-  color: #fff;
-  text-decoration: none;
-  font-size: 12px;
-  font-weight: 600;
-  padding: 6px 12px;
-  border-radius: 99px;
-}
-
-/* 住宿與房間分配卡片 (Video 2) */
-.hotel-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: var(--shadow);
-}
-
-.hotel-card img {
-  width: 100%;
-  height: 165px;
-  object-fit: cover;
-}
-
-.hotel-body {
-  padding: 14px 16px;
-}
-
-.hotel-meta-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 6px;
-}
-
-.hotel-body h4 {
-  font-size: 17px;
-  margin-bottom: 4px;
-}
-
-.room-details {
-  margin-top: 12px;
-  border-top: 1px solid var(--border);
-  padding-top: 10px;
-}
-
-.room-details summary {
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--ink-soft);
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
-}
-
-.room-box {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 10px 12px;
-  margin-top: 8px;
-}
-
-.room-box-head {
-  display: flex;
-  justify-content: space-between;
-  font-size: 13px;
-  font-weight: 700;
-  margin-bottom: 4px;
-}
-
-/* 旅遊小提醒摺疊卡 (Video 2) */
-.tips-accordion {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 14px 16px;
-  box-shadow: var(--shadow);
-}
-
-.tips-accordion summary {
-  list-style: none;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 14px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.tips-group {
-  margin-top: 14px;
-  padding-top: 12px;
-  border-top: 1px solid var(--border);
-}
-
-.tips-group h4 {
-  font-size: 15px;
-  color: var(--espresso);
-  margin-bottom: 6px;
-}
-
-.tips-group ul {
-  padding-left: 18px;
-  font-size: 13px;
-  color: var(--ink-soft);
-}
-
-.tips-group li {
-  margin-bottom: 5px;
-}
-
-/* ==================== 行程 VIEW (Video 1 + Video 2) ==================== */
-.plan-toolbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 10px;
-  margin-bottom: 14px;
-}
-
-.plan-toolbar h2 {
-  font-family: "Noto Serif TC", serif;
-  font-size: 19px;
-}
-
-.mode-switch {
-  display: flex;
-  background: var(--card-warm);
-  border: 1px solid var(--border);
-  border-radius: 99px;
-  padding: 3px;
-}
-
-.mode-switch button {
-  border: 0;
-  background: none;
-  padding: 5px 10px;
-  border-radius: 99px;
-  font: inherit;
-  font-size: 12px;
-  color: var(--muted);
-  cursor: pointer;
-}
-
-.mode-switch button.active {
-  background: var(--espresso);
-  color: #fff;
-  font-weight: 600;
-}
-
-/* 單日時間軸卡片 (Video 1 00:08) */
+/* ==================== 2. 行程 VIEW (影片 1 00:08–00:09) ==================== */
 .stop-card {
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 16px;
+  border-radius: var(--radius-xl);
+  padding: 18px 16px;
   display: grid;
-  grid-template-columns: 62px 1fr;
-  gap: 12px;
+  grid-template-columns: 64px 1fr;
+  gap: 14px;
+  margin-bottom: 12px;
   box-shadow: var(--shadow);
 }
 
 .stop-left {
-  border-right: 1px solid var(--border);
-  padding-right: 8px;
+  border-right: 1px solid #eae0cf;
+  padding-right: 10px;
 }
 
 .stop-time {
   font-family: "Cormorant Garamond", serif;
-  font-size: 19px;
+  font-size: 20px;
   font-weight: 700;
   color: var(--ink);
+  line-height: 1.1;
 }
 
 .stop-dur {
-  font-size: 11px;
+  font-size: 11.5px;
   color: var(--muted);
-  margin-top: 2px;
+  margin-top: 4px;
 }
 
 .stop-title {
   font-family: "Noto Serif TC", serif;
   font-size: 17px;
   font-weight: 700;
-  margin-bottom: 6px;
+  color: var(--ink);
+  margin-bottom: 7px;
 }
 
 .stop-tags {
   display: flex;
   gap: 6px;
   flex-wrap: wrap;
-  margin-bottom: 8px;
+  margin-bottom: 9px;
 }
 
 .chip-area {
-  background: var(--card-warm);
+  background: #efe6d7;
   color: var(--ink-soft);
-  font-size: 11px;
-  padding: 2px 9px;
+  font-size: 11.5px;
+  padding: 2px 10px;
   border-radius: 6px;
 }
 
 .chip-cat {
-  background: #efe0d9;
+  background: var(--terracotta-bg);
   color: var(--terracotta);
-  font-size: 11px;
-  font-weight: 600;
-  padding: 2px 9px;
+  font-size: 11.5px;
+  font-weight: 500;
+  padding: 2px 10px;
   border-radius: 6px;
 }
 
 .stop-desc {
   font-size: 13.5px;
   color: var(--ink-soft);
-  margin-bottom: 12px;
+  margin-bottom: 13px;
 }
 
 .stop-actions {
   display: flex;
-  gap: 7px;
+  gap: 8px;
   flex-wrap: wrap;
 }
 
 .pill-action {
   border: 1px solid var(--border-strong);
-  background: var(--bg);
-  color: var(--ink);
+  background: #f7f2e8;
+  color: var(--ink-soft);
   border-radius: 99px;
-  padding: 5px 12px;
+  padding: 5px 13px;
   font: inherit;
   font-size: 12px;
   text-decoration: none;
@@ -1023,30 +601,29 @@ body {
   gap: 4px;
 }
 
-/* 站與站之間的交通連接膠囊 (Video 1 & Video 2) */
-.transit-connector {
+/* 站與站之間的米色車程卡 (影片 1 00:08 上方) */
+.transit-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 12px 16px;
+  margin: -2px 0 12px;
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 14px;
+  box-shadow: var(--shadow);
+}
+
+.transit-left {
+  border-right: 1px solid #eae0cf;
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 8px 0 8px 26px;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 13px;
 }
 
-.transit-line {
-  width: 2px;
-  height: 26px;
-  background: var(--border-strong);
-}
-
-.transit-pill {
-  background: var(--card-warm);
-  border: 1px dashed var(--border-strong);
-  color: var(--ink-soft);
-  font-size: 12px;
-  padding: 4px 12px;
-  border-radius: 99px;
-}
-
-/* 今日筆記卡 (Video 1 00:09) */
+/* 日 今日筆記卡 (影片 1 00:09) */
 .daily-note-card {
   margin-top: 16px;
 }
@@ -1056,77 +633,41 @@ body {
   height: 24px;
   border-radius: 6px;
   border: 1px solid var(--border-strong);
+  background: var(--bg);
   display: grid;
   place-items: center;
   font-family: "Noto Serif TC", serif;
-  font-size: 13px;
+  font-size: 12.5px;
   color: var(--gold);
+}
+
+.note-dashed-box {
+  border: 1px dashed var(--border-strong);
+  border-radius: 14px;
+  padding: 14px;
+  background: #faf6ee;
 }
 
 #dailyNoteInput {
   width: 100%;
-  min-height: 92px;
+  min-height: 84px;
   border: 0;
   background: transparent;
   font: inherit;
-  font-size: 14px;
+  font-size: 13.5px;
   color: var(--ink);
   resize: vertical;
   outline: none;
 }
 
-/* 全行程摺疊總覽 (Video 2 00:16) */
-.day-accordion {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  margin-bottom: 10px;
-  overflow: hidden;
-  box-shadow: var(--shadow);
-}
-
-.day-accordion summary {
-  list-style: none;
-  padding: 14px 16px;
-  font-weight: 700;
-  font-size: 15px;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.day-acc-body {
-  padding: 6px 16px 14px;
-  border-top: 1px solid var(--border);
-}
-
-.mini-stop {
-  display: grid;
-  grid-template-columns: 52px 1fr;
-  gap: 8px;
-  padding: 7px 0;
-  font-size: 13.5px;
-}
-
-.mini-transit {
-  margin-left: 60px;
-  font-size: 11.5px;
-  color: var(--muted);
-  background: var(--bg);
-  display: inline-block;
-  padding: 2px 10px;
-  border-radius: 99px;
-  margin-bottom: 4px;
-}
-
-/* ==================== 地圖 VIEW (Video 1 00:10) ==================== */
+/* ==================== 3. 地圖 VIEW (影片 1 00:10) ==================== */
 .map-frame-card {
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   overflow: hidden;
   box-shadow: var(--shadow);
+  margin-bottom: 12px;
 }
 
 .leaflet-box {
@@ -1135,15 +676,18 @@ body {
   z-index: 1;
 }
 
-.map-stats-bar {
+.map-stats-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--border);
-  background: var(--card);
+  box-shadow: var(--shadow);
+  margin-bottom: 14px;
 }
 
 .map-stat {
-  padding: 12px 10px;
+  padding: 13px 10px;
   text-align: center;
   border-right: 1px solid var(--border);
 }
@@ -1153,11 +697,12 @@ body {
   display: block;
   font-size: 11px;
   color: var(--muted);
-  margin-bottom: 2px;
+  margin-bottom: 3px;
 }
 
 .map-stat strong {
-  font-size: 14px;
+  font-family: "Noto Serif TC", serif;
+  font-size: 15px;
   color: var(--ink);
 }
 
@@ -1178,7 +723,7 @@ body {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 14px;
-  padding: 11px 14px;
+  padding: 12px 14px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1188,23 +733,24 @@ body {
 .pin-num {
   display: inline-grid;
   place-items: center;
-  width: 24px;
-  height: 24px;
+  width: 23px;
+  height: 23px;
   border-radius: 50%;
   background: var(--espresso);
   color: #fff;
-  font-size: 12px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 13px;
   font-weight: 700;
   margin-right: 8px;
 }
 
-/* ==================== 記帳 VIEW (Video 1 00:11-00:12) ==================== */
+/* ==================== 4. 記帳 VIEW (影片 1 00:11–00:12) ==================== */
 .wallet-seg {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background: var(--card-warm);
+  background: #ede3d2;
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: 15px;
   padding: 4px;
   margin-bottom: 14px;
 }
@@ -1213,7 +759,7 @@ body {
   border: 0;
   background: none;
   padding: 9px;
-  border-radius: 10px;
+  border-radius: 11px;
   font: inherit;
   font-size: 14px;
   color: var(--muted);
@@ -1223,13 +769,22 @@ body {
 .wallet-seg button.active {
   background: var(--espresso);
   color: #fff;
-  font-weight: 700;
+  font-weight: 600;
+}
+
+.wallet-hero-card {
+  background: linear-gradient(135deg, #f5ebd6 0%, #ead8b8 100%);
+  border: 1px solid #dcc7a1;
+  border-radius: var(--radius-xl);
+  padding: 18px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow);
 }
 
 .gold-label {
   font-size: 13px;
   font-weight: 700;
-  color: var(--gold);
+  color: #9e7432;
 }
 
 .wallet-hero-body {
@@ -1244,11 +799,7 @@ body {
   font-weight: 700;
   line-height: 1.05;
   margin-bottom: 4px;
-}
-
-.coins-art {
-  font-size: 28px;
-  opacity: 0.7;
+  color: var(--ink);
 }
 
 .converter-row {
@@ -1259,10 +810,10 @@ body {
 }
 
 .conv-box {
-  background: var(--bg);
+  background: #f5efe4;
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 10px 12px;
+  padding: 11px 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1275,7 +826,7 @@ body {
 }
 
 .conv-box input {
-  width: 78px;
+  width: 76px;
   border: 0;
   background: transparent;
   text-align: right;
@@ -1288,14 +839,14 @@ body {
 
 .conv-arrow {
   color: var(--muted);
-  font-size: 18px;
+  font-size: 17px;
 }
 
 .conv-note {
   text-align: center;
-  font-size: 12px;
+  font-size: 11.5px;
   color: var(--muted);
-  margin-top: 10px;
+  margin-top: 11px;
 }
 
 .dark-wide-btn {
@@ -1306,18 +857,18 @@ body {
   border-radius: 15px;
   padding: 14px;
   font: inherit;
-  font-size: 15px;
-  font-weight: 700;
+  font-size: 14.5px;
+  font-weight: 600;
   cursor: pointer;
   margin-bottom: 14px;
-  box-shadow: 0 6px 16px rgba(38, 28, 21, 0.18);
+  box-shadow: 0 5px 14px rgba(40, 30, 22, 0.16);
 }
 
 .exp-item {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 15px;
-  padding: 12px 14px;
+  padding: 13px 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1333,112 +884,85 @@ body {
   cursor: pointer;
 }
 
-/* ==================== 備用景點 & 清單 VIEW (Video 1 00:13) ==================== */
-.spots-subtabs {
+/* ==================== 5. 備用景點 VIEW (影片 1 00:13–00:14) ==================== */
+.spots-filter-row {
   display: flex;
   gap: 8px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
-.spots-subtabs button {
+.spots-filter-row button {
   flex: 1;
   border: 1px solid var(--border);
   background: var(--card);
-  padding: 9px;
-  border-radius: 12px;
-  font: inherit;
-  font-size: 13.5px;
-  font-weight: 600;
   color: var(--ink-soft);
+  border-radius: 99px;
+  padding: 7px 10px;
+  font: inherit;
+  font-size: 12.5px;
   cursor: pointer;
 }
 
-.spots-subtabs button.active {
+.spots-filter-row button.active {
   background: var(--espresso);
-  color: #fff;
   border-color: var(--espresso);
+  color: #fff;
+  font-weight: 600;
 }
 
 .saved-spot-card {
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 16px;
+  border-radius: var(--radius-xl);
+  padding: 18px;
   margin-bottom: 12px;
   box-shadow: var(--shadow);
 }
 
 .saved-spot-card h3 {
   font-family: "Noto Serif TC", serif;
-  font-size: 18px;
-  margin-bottom: 2px;
+  font-size: 17.5px;
+  color: var(--ink);
+  margin-bottom: 3px;
 }
 
 .saved-spot-area {
-  font-size: 12px;
+  font-size: 12.5px;
   color: var(--muted);
-  margin-bottom: 8px;
+  margin-bottom: 9px;
 }
 
 .saved-spot-desc {
   font-size: 13.5px;
   color: var(--ink-soft);
-  margin-bottom: 12px;
+  margin-bottom: 13px;
 }
 
-.check-progress-bar {
-  height: 8px;
-  background: var(--border);
-  border-radius: 99px;
-  overflow: hidden;
-  margin-bottom: 14px;
-}
-
-#checkProgressFill {
-  height: 100%;
-  width: 0%;
-  background: var(--gold);
-  transition: width 0.25s ease;
-}
-
-.check-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 9px 0;
-  border-bottom: 1px dashed var(--border);
-  cursor: pointer;
-  font-size: 14px;
-}
-.check-row:last-child { border-bottom: 0; }
-.check-row input { width: 18px; height: 18px; accent-color: var(--espresso); }
-.check-row.done span { text-decoration: line-through; color: var(--muted); }
-
-/* 右下角懸浮 ＋ 按鈕 (Video 1) */
+/* 右下角深咖色懸浮 ＋ 按鈕 (影片 1) */
 .fab-btn {
   position: fixed;
-  right: max(20px, calc(50% - 240px));
+  right: max(20px, calc(50% - 220px));
   bottom: calc(92px + env(safe-area-inset-bottom));
-  width: 52px;
-  height: 52px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   border: 0;
   background: var(--espresso);
   color: #fff;
-  font-size: 26px;
-  box-shadow: 0 8px 22px rgba(38, 28, 21, 0.32);
+  font-size: 24px;
+  box-shadow: 0 6px 18px rgba(40, 30, 22, 0.28);
   cursor: pointer;
   z-index: 25;
 }
 
-/* ==================== 底部五格導覽列 (Video 1 中央凸起首頁鈕) ==================== */
+/* ==================== 底部五格導覽列 (影片 1 中央凸起首頁圓鈕) ==================== */
 .bottom-bar {
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
   bottom: 0;
   width: 100%;
-  max-width: 520px;
+  max-width: 480px;
   background: rgba(251, 248, 242, 0.96);
   backdrop-filter: blur(12px);
   border-top: 1px solid var(--border);
@@ -1479,7 +1003,7 @@ body {
   background: var(--espresso);
   color: #fff;
   border: 4px solid var(--bg);
-  box-shadow: 0 4px 14px rgba(38, 28, 21, 0.25);
+  box-shadow: 0 4px 14px rgba(40, 30, 22, 0.22);
   display: grid;
   place-items: center;
   margin-top: -24px;
@@ -1487,14 +1011,14 @@ body {
 }
 
 .nav-home.active .home-orb {
-  transform: translateY(-2px) scale(1.04);
+  transform: translateY(-2px);
 }
 
-/* ==================== Modal 視窗 ==================== */
+/* ==================== 米色質感底部彈出視窗 Modal ==================== */
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(38, 28, 21, 0.48);
+  background: rgba(40, 30, 22, 0.45);
   backdrop-filter: blur(3px);
   z-index: 100;
   display: flex;
@@ -1504,19 +1028,75 @@ body {
 
 .modal-sheet {
   width: 100%;
-  max-width: 520px;
-  max-height: 88dvh;
+  max-width: 480px;
+  max-height: 86dvh;
   overflow-y: auto;
-  background: var(--card);
+  background: var(--bg);
+  border-top: 1px solid var(--border);
   border-radius: 24px 24px 0 0;
   padding: 20px 18px calc(24px + env(safe-area-inset-bottom));
 }
 
 .modal-sheet h3 {
   font-family: "Noto Serif TC", serif;
-  font-size: 19px;
+  font-size: 18.5px;
   margin-bottom: 14px;
+  color: var(--ink);
 }
+
+.sheet-subcard {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 15px;
+  margin-bottom: 12px;
+}
+
+.sheet-subcard h4 {
+  font-family: "Noto Serif TC", serif;
+  font-size: 15.5px;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.sheet-subcard ul {
+  padding-left: 18px;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.sheet-subcard li {
+  margin-bottom: 5px;
+}
+
+.weather-mini-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+  text-align: center;
+  margin-top: 8px;
+}
+
+.w-mini-box {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 6px 2px;
+  font-size: 11px;
+}
+
+.check-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--border);
+  cursor: pointer;
+  font-size: 13.5px;
+}
+.check-row:last-child { border-bottom: 0; }
+.check-row input { width: 17px; height: 17px; accent-color: var(--espresso); }
+.check-row.done span { text-decoration: line-through; color: var(--muted); }
 
 .form-grid {
   display: grid;
@@ -1536,7 +1116,7 @@ body {
 .form-grid textarea {
   width: 100%;
   border: 1px solid var(--border-strong);
-  background: var(--bg);
+  background: var(--card);
   border-radius: 11px;
   padding: 10px 12px;
   font: inherit;
@@ -1555,7 +1135,7 @@ body {
   padding: 12px;
   border-radius: 12px;
   font: inherit;
-  font-weight: 700;
+  font-weight: 600;
   cursor: pointer;
 }
 
@@ -1567,12 +1147,12 @@ body {
 
 .btn-secondary {
   border: 1px solid var(--border-strong);
-  background: var(--bg);
+  background: var(--card);
   color: var(--ink);
 }
 
 .btn-danger {
-  border: 1px solid #e0a097;
-  background: #fdf0ee;
-  color: #b42318;
+  border: 1px solid #d9a196;
+  background: #faf0ed;
+  color: var(--terracotta);
 }
