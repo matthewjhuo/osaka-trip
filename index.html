@@ -2,92 +2,392 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#1f1d2b" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f5efe4" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
-  <title>大阪 6 天 5 夜行程書</title>
+  <title>Osaka 遊記 · 大阪 6 天 5 夜行程書</title>
   <link rel="manifest" href="manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="hero">
-    <div class="hero-inner">
-      <p class="eyebrow" id="subtitle"></p>
-      <h1 id="title"></h1>
-      <div class="hero-meta">
-        <label class="date-pick">📅 出發日
-          <input type="date" id="startDate" />
-        </label>
-        <span id="countdown" class="countdown"></span>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <!-- 行程 -->
-    <section id="view-plan" class="view active">
-      <nav class="day-tabs" id="dayTabs"></nav>
-      <div id="dayContent"></div>
-    </section>
-
-    <!-- 清單 -->
-    <section id="view-check" class="view">
-      <div class="section-head">
-        <h2>行前清單</h2>
-        <span class="progress-text" id="checkProgress"></span>
-      </div>
-      <div class="progress"><div id="checkBar"></div></div>
-      <div id="checklist"></div>
-    </section>
-
-    <!-- 記帳 -->
-    <section id="view-money" class="view">
-      <div class="section-head"><h2>旅費記帳</h2></div>
-      <div class="card total-card">
+  <div class="app-shell">
+    <!-- 頂部標題與日期切換列 (Video 1 風格) -->
+    <header class="top-header">
+      <div class="brand-row">
         <div>
-          <p class="muted">總花費</p>
-          <p class="big" id="totalJpy">¥0</p>
-          <p class="muted" id="totalTwd">≈ NT$0</p>
+          <p class="brand-eyebrow" id="brandEyebrow">Kansai Tabi · 關西之旅</p>
+          <h1 class="brand-title"><span class="serif-italic">Osaka</span> 遊記</h1>
         </div>
-        <label class="rate">匯率 1 JPY =
-          <input type="number" step="0.001" id="rate" /> TWD
-        </label>
+        <button class="icon-btn" id="openSettingsBtn" title="行程設定" aria-label="行程設定">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="12" cy="12" r="3.2"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c.26.604.852.997 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+        </button>
       </div>
-      <form id="expenseForm" class="card expense-form">
-        <select id="expDay"></select>
-        <select id="expCat">
-          <option>🍜 餐飲</option><option>🚆 交通</option><option>🛍️ 購物</option>
-          <option>🎫 門票</option><option>🏨 住宿</option><option>📦 其他</option>
-        </select>
-        <input id="expName" placeholder="項目，例如：章魚燒" required />
-        <input id="expAmt" type="number" min="0" placeholder="金額 ¥" required />
-        <button type="submit">新增</button>
-      </form>
-      <div id="catSummary" class="cat-summary"></div>
-      <ul id="expenseList" class="expense-list"></ul>
-    </section>
 
-    <!-- 資訊 -->
-    <section id="view-info" class="view">
-      <div class="section-head"><h2>旅遊資訊</h2></div>
-      <div id="infoList"></div>
-      <div class="card">
-        <h3>📝 我的備忘錄</h3>
-        <textarea id="notes" placeholder="航班編號、飯店訂房代碼、想買的東西…"></textarea>
+      <!-- 日期膠囊列 -->
+      <div class="date-strip" id="dateStrip"></div>
+
+      <!-- 進度條與左右切換 -->
+      <div class="day-slider-row">
+        <button class="circle-arrow" id="prevDayBtn" aria-label="前一天">‹</button>
+        <div class="slider-wrap">
+          <div class="slider-track">
+            <div class="slider-fill" id="sliderFill"></div>
+            <div class="slider-dot" id="sliderDot"></div>
+          </div>
+          <p class="slider-label" id="sliderLabel">Day 1 / 6</p>
+        </div>
+        <button class="circle-arrow" id="nextDayBtn" aria-label="後一天">›</button>
       </div>
-      <button class="ghost-btn" id="resetBtn">重設所有紀錄</button>
-    </section>
-  </main>
+    </header>
 
-  <nav class="bottom-nav">
-    <button data-view="plan" class="active"><span>🗺️</span>行程</button>
-    <button data-view="check"><span>✅</span>清單</button>
-    <button data-view="money"><span>💴</span>記帳</button>
-    <button data-view="info"><span>ℹ️</span>資訊</button>
-  </nav>
+    <!-- 主內容區 -->
+    <main class="main-content">
+      <!-- ==================== 首頁 VIEW ==================== -->
+      <section id="view-home" class="view active">
+        <!-- 當日目的地大卡片 (Video 1) -->
+        <div class="dest-hero-card">
+          <div class="dest-art">
+            <span class="dest-watermark">Osaka</span>
+            <svg class="flight-svg" viewBox="0 0 130 70" fill="none">
+              <path d="M18 52 C 45 55, 70 22, 105 20" stroke="#7c6352" stroke-width="1.6" stroke-dasharray="4 4"/>
+              <circle cx="18" cy="52" r="5" fill="#7c6352"/>
+              <path d="M22 30c0-5.5 4.5-10 10-10s10 4.5 10 10c0 7-10 17-10 17S22 37 22 30z" fill="#6e503d"/>
+              <circle cx="32" cy="30" r="3.5" fill="#f7f1e6"/>
+              <text x="98" y="25" font-size="16">✈</text>
+            </svg>
+          </div>
+          <div class="dest-today-box" id="homeTodayBox"></div>
+        </div>
 
+        <!-- 出團航班與即時倒數摺疊條 -->
+        <button class="flight-bar-btn" id="jumpFlightBtn">
+          <span>✈️ 出團資訊・航班時刻表・即時倒數</span>
+          <span class="chevron">›</span>
+        </button>
+
+        <!-- 今日行程預覽卡 (Video 1) -->
+        <div class="cream-card home-schedule-preview">
+          <div class="card-head-row">
+            <div class="card-head-title">
+              <span class="mini-cal-icon">📅</span>
+              <strong>今日行程</strong>
+            </div>
+            <button class="text-link" data-goto="plan">查看全部 ›</button>
+          </div>
+          <div id="homePreviewList" class="preview-list"></div>
+          <button class="more-stops-btn" id="homeMoreBtn" data-goto="plan">還有 3 個行程</button>
+        </div>
+
+        <!-- 功能總覽 Menu Bento Grid (Video 1) -->
+        <div class="section-caption-row">
+          <h2>功能總覽</h2>
+          <span class="serif-italic muted">Menu</span>
+        </div>
+        <div class="bento-grid">
+          <button class="bento-card" data-goto="plan">
+            <div class="bento-icon">🗓️</div>
+            <span class="bento-en">Plans</span>
+            <strong>每日行程</strong>
+            <small>編輯時間地點與備註</small>
+          </button>
+          <button class="bento-card" data-goto="map">
+            <div class="bento-icon">🗺️</div>
+            <span class="bento-en">Map</span>
+            <strong>地圖導航</strong>
+            <small>當日所有地點、我的位置</small>
+          </button>
+          <button class="bento-card" data-goto="wallet">
+            <div class="bento-icon">🪙</div>
+            <span class="bento-en">Wallet</span>
+            <strong>記帳分帳</strong>
+            <small>自動換算為台幣</small>
+          </button>
+          <button class="bento-card" data-goto="spots">
+            <div class="bento-icon">🔖</div>
+            <span class="bento-en">Saved</span>
+            <strong>備用景點</strong>
+            <small>收藏想去的地方</small>
+          </button>
+          <button class="bento-card bento-wide" id="jumpTipsBtn">
+            <div class="bento-icon">📖</div>
+            <div>
+              <span class="bento-en">Travel Tips</span>
+              <strong>旅遊須知 & 打包清單</strong>
+              <small>出發前必讀・護照・2026退稅新制・行前清單</small>
+            </div>
+          </button>
+        </div>
+
+        <!-- ==================== 影片 2 精選看板區（倒數、航班、即時天氣、必訪景點、美食、住宿、須知） ==================== -->
+        <div class="v2-showcase" id="homeShowcase">
+          <!-- 即時秒數倒數 Banner (Video 2) -->
+          <div class="countdown-banner">
+            <p class="cd-subtitle" id="cdDateRange">2026.12.10 – 12.15</p>
+            <div class="cd-glass-box">
+              <p class="cd-label">大阪出發倒數</p>
+              <p class="cd-timer" id="liveCountdown">0天 00小時 00分 <em>00秒</em></p>
+            </div>
+            <div class="cd-badges" id="cdBadges"></div>
+          </div>
+
+          <!-- 快速錨點膠囊列 (Video 2) -->
+          <div class="quick-pills" id="quickPills">
+            <button data-scroll="sec-flights" class="active">✈️ 航班</button>
+            <button data-scroll="sec-weather">🌤️ 天氣</button>
+            <button data-scroll="sec-highlights">📍 景點</button>
+            <button data-scroll="sec-foods">🍜 美食</button>
+            <button data-scroll="sec-hotels">🏨 住宿</button>
+            <button data-scroll="sec-tips">🧳 提醒</button>
+          </div>
+
+          <!-- ✈️ 航班資訊 -->
+          <div id="sec-flights" class="showcase-block">
+            <div class="block-head">
+              <h3>✈️ 航班資訊</h3>
+              <button class="pill-action" id="editFlightBtn">✎ 編輯航班</button>
+            </div>
+            <div id="flightsContainer"></div>
+          </div>
+
+          <!-- 🌤️ 大阪六日即時天氣 (Open-Meteo API) -->
+          <div id="sec-weather" class="showcase-block">
+            <div class="block-head">
+              <h3>🌤️ 大阪關西即時天氣</h3>
+              <span class="muted-xs" id="weatherStatus">更新中…</span>
+            </div>
+            <div class="cream-card weather-card">
+              <div class="weather-strip" id="weatherStrip"></div>
+              <div class="weather-foot">
+                <span>✅ 即時預報 (Open-Meteo)，每次開啟自動更新</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 📍 必訪景點橫向畫廊 (Video 2) -->
+          <div id="sec-highlights" class="showcase-block">
+            <div class="block-head">
+              <h3>📍 必訪景點</h3>
+              <span class="muted-xs">左右滑動查看 ›</span>
+            </div>
+            <div class="photo-carousel" id="highlightsCarousel"></div>
+          </div>
+
+          <!-- 🍜 美食推薦橫向畫廊 (Video 2) -->
+          <div id="sec-foods" class="showcase-block">
+            <div class="block-head">
+              <h3>🍜 美食推薦</h3>
+              <span class="muted-xs">左右滑動查看 ›</span>
+            </div>
+            <div class="photo-carousel" id="foodsCarousel"></div>
+          </div>
+
+          <!-- 🏨 住宿與房間分配 (Video 2) -->
+          <div id="sec-hotels" class="showcase-block">
+            <div class="block-head">
+              <h3>🏨 住宿與房間分配</h3>
+            </div>
+            <div id="hotelsContainer"></div>
+          </div>
+
+          <!-- 🧳 旅遊小提醒 & 2026 退稅新制 (Video 2) -->
+          <div id="sec-tips" class="showcase-block">
+            <div class="block-head">
+              <h3>🧳 旅遊小提醒</h3>
+            </div>
+            <details class="tips-accordion" open>
+              <summary>
+                <span>點開查看：護照 · 日幣 · 常備藥品 · 2026退稅新制</span>
+                <span class="chevron">▾</span>
+              </summary>
+              <div class="tips-body" id="remindersContainer"></div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 行程 VIEW (Video 1 + Video 2) ==================== -->
+      <section id="view-plan" class="view">
+        <div class="plan-toolbar">
+          <div>
+            <p class="muted-xs" id="planDaySub">DAY 1 · OSAKA</p>
+            <h2 id="planDayTitle">抵達關西・道頓堀夜未眠</h2>
+          </div>
+          <div class="mode-switch">
+            <button class="active" data-planmode="single">單日詳細</button>
+            <button data-planmode="all">全天總覽</button>
+          </div>
+        </div>
+
+        <!-- 單日詳細時間軸 -->
+        <div id="planSingleWrap">
+          <div id="planTimeline" class="v1-timeline"></div>
+
+          <!-- 日 今日筆記 (Video 1 00:09) -->
+          <div class="cream-card daily-note-card">
+            <div class="card-head-row">
+              <div class="card-head-title">
+                <span class="note-badge">日</span>
+                <strong>今日筆記</strong>
+              </div>
+              <button class="text-link" id="focusNoteBtn">點擊撰寫 ✎</button>
+            </div>
+            <textarea id="dailyNoteInput" placeholder="尚未記錄 — 點擊這裡寫下今天的心情、想買的、買到的、有趣的見聞…"></textarea>
+          </div>
+        </div>
+
+        <!-- 全行程摺疊總覽 (Video 2 00:16) -->
+        <div id="planAllWrap" class="hidden"></div>
+
+        <!-- 右下角懸浮 ＋ 新增行程按鈕 (Video 1) -->
+        <button class="fab-btn" id="addStopFab" title="新增行程" aria-label="新增行程">＋</button>
+      </section>
+
+      <!-- ==================== 地圖 VIEW (Video 1 00:10) ==================== -->
+      <section id="view-map" class="view">
+        <div class="map-frame-card">
+          <div id="leafletMap" class="leaflet-box"></div>
+          <div class="map-stats-bar">
+            <div class="map-stat">
+              <small>行程 · 收藏</small>
+              <strong id="mapCountStat">6 + 5</strong>
+            </div>
+            <div class="map-stat">
+              <small>CITY</small>
+              <strong id="mapCityStat">大阪難波</strong>
+            </div>
+            <button class="map-stat map-locate-btn" id="locateMeBtn">
+              <small>YOU</small>
+              <strong id="mapYouStat">點擊定位 📍</strong>
+            </button>
+          </div>
+        </div>
+
+        <div class="section-caption-row">
+          <h3>當日地點快選</h3>
+          <span class="muted-xs">點擊地標移動地圖</span>
+        </div>
+        <div id="mapPinList" class="map-pin-list"></div>
+      </section>
+
+      <!-- ==================== 記帳 VIEW (Video 1 00:11-00:12) ==================== -->
+      <section id="view-wallet" class="view">
+        <div class="wallet-seg">
+          <button class="active" data-wmode="daily">每日 <span class="serif-italic">Daily</span></button>
+          <button data-wmode="total">累積 <span class="serif-italic">Total</span></button>
+        </div>
+
+        <!-- 總額卡片 -->
+        <div class="cream-card wallet-hero-card">
+          <div class="card-head-row">
+            <span class="gold-label" id="walletHeroLabel">本日支出 12/10</span>
+            <span class="serif-italic muted">Total</span>
+          </div>
+          <div class="wallet-hero-body">
+            <div>
+              <p class="wallet-ntd" id="walletTotalTwd">NT$ 0</p>
+              <p class="muted-xs" id="walletTotalJpy">尚無外幣支出</p>
+            </div>
+            <div class="coins-art">🪙🪙</div>
+          </div>
+        </div>
+
+        <!-- 雙向匯率換算卡片 (Video 1 00:11) -->
+        <div class="cream-card converter-card">
+          <div class="card-head-row">
+            <strong>匯率換算</strong>
+            <span class="serif-italic muted">Currency</span>
+          </div>
+          <div class="converter-row">
+            <label class="conv-box">
+              <span>JPY ¥</span>
+              <input type="number" id="convJpy" placeholder="0" inputmode="decimal" />
+            </label>
+            <span class="conv-arrow">→</span>
+            <label class="conv-box">
+              <span>TWD $</span>
+              <input type="number" id="convTwd" placeholder="0" inputmode="decimal" />
+            </label>
+          </div>
+          <p class="conv-note" id="convRateNote">1 JPY ≈ 0.215 TWD · 點擊右上角 ⚙️ 可調整匯率</p>
+        </div>
+
+        <button class="dark-wide-btn" id="openExpenseModalBtn">＋ 新增支出</button>
+
+        <div class="section-caption-row">
+          <h3>支出記錄</h3>
+          <span class="serif-italic muted" id="expenseSubLabel">Today's Expenses</span>
+        </div>
+        <div id="expenseListWrap" class="expense-list-wrap"></div>
+      </section>
+
+      <!-- ==================== 景點 & 清單 VIEW (Video 1 00:13 + 行前清單) ==================== -->
+      <section id="view-spots" class="view">
+        <div class="spots-subtabs">
+          <button class="active" data-stab="saved">🔖 備用景點</button>
+          <button data-stab="check">✅ 行前清單</button>
+        </div>
+
+        <div id="stabSavedWrap">
+          <div class="section-caption-row">
+            <h2>備用景點</h2>
+            <span class="serif-italic muted">Saved Spots</span>
+          </div>
+          <div id="savedSpotsList"></div>
+          <button class="fab-btn" id="addSavedFab" title="新增備用景點" aria-label="新增備用景點">＋</button>
+        </div>
+
+        <div id="stabCheckWrap" class="hidden">
+          <div class="section-caption-row">
+            <h2>行前準備清單</h2>
+            <span class="gold-label" id="checkProgressText">0 / 0 (0%)</span>
+          </div>
+          <div class="check-progress-bar"><div id="checkProgressFill"></div></div>
+          <div id="checklistContainer"></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 底部五格導覽列 (中間凸起首頁圓鈕，100% 還原 Video 1) -->
+    <nav class="bottom-bar">
+      <button class="nav-item" data-tab="plan">
+        <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="17" rx="2"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="3" y1="9" x2="21" y2="9"/></svg>
+        <span>行程</span>
+      </button>
+      <button class="nav-item" data-tab="map">
+        <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+        <span>地圖</span>
+      </button>
+      <button class="nav-item nav-home active" data-tab="home">
+        <div class="home-orb">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/><rect x="9.5" y="14" width="5" height="6"/></svg>
+        </div>
+        <span>首頁</span>
+      </button>
+      <button class="nav-item" data-tab="wallet">
+        <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="15" rx="2.5"/><path d="M16 12.5h4"/><circle cx="16.5" cy="12.5" r="1"/></svg>
+        <span>記帳</span>
+      </button>
+      <button class="nav-item" data-tab="spots">
+        <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+        <span>景點</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- 通用彈出視窗 Modal -->
+  <div class="modal-backdrop hidden" id="modalBackdrop">
+    <div class="modal-sheet" id="modalSheet"></div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="data.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
-
